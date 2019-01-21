@@ -1,0 +1,257 @@
+.n2
+{
+  background-color: #3069bd;
+  max-width: 100% !important;
+  padding: 20px;
+}
+
+.bg-popup
+{
+  background: url('../../assets/template/Scholarship.png') no-repeat center;
+    background-size: 100% 100%;
+    height: 600px;
+}
+.require
+{
+  margin-left: 50px;
+}
+.require1
+{
+  margin-left: 0px;
+}
+.bg-popup1
+{
+background-color: white;
+    height: 600px;
+}
+.main
+{
+  position: absolute;
+    /* right: 138px; */
+    top: 160px;
+    left: -140px;
+  width:800px;
+}
+.logo-popup
+{
+  margin-top: 80px;
+  margin-left: 37px;
+}
+.white
+{
+  color: white;
+  margin-top: 15px;
+  margin-left: 37px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.white1
+{
+  color: white;
+  margin-top: 260px;
+  margin-left: 37px;
+  font-size: 14px;
+  
+}
+.login
+{
+  padding-top: 70px;
+  text-align: center;
+}
+.signup
+{
+  text-align: center;
+
+}
+.orange
+{
+  color:orange !important;
+  cursor: pointer;
+}
+.input-popup
+{
+  margin-left: 45px;
+  margin-top: 80px;
+  width: 280px;
+  border: 0px;
+
+  border-bottom: 2px solid lightgrey;
+}
+.input-rpopup
+{
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 160px;
+  border: 0px;
+  border-radius: 0px !important;
+  border-bottom: 2px solid lightgrey;
+}
+.input-r1popup
+{
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 355px;
+  border: 0px;
+  border-radius: 0px !important;
+  border-bottom: 2px solid lightgrey;
+}
+.input-popup
+{
+  margin-left: 45px;
+  border-radius: 0px !important;
+  margin-top: 45px;
+  width: 280px;
+  border: 0px;
+  /* padding-left: 40px; */
+  /* padding-right: 40px; */
+  border-bottom: 2px solid lightgrey;
+}
+.input-btn
+{
+  margin-top: 150px;
+    margin-left: 45px;
+    width: 280px;
+    background-color: orange;
+    border: 0px;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+.input-rbtn
+{
+  margin-top: 50px;
+    margin-left: 45px;
+    width: 280px;
+    background-color: orange;
+    border: 0px;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+.close
+{
+  color: gray;
+  padding: 10px;
+
+  border-radius: 100px;
+  margin-top: 10px;
+}
+.close1
+{
+  color: gray;
+  padding: 10px;
+
+  border-radius: 100px;
+  margin-top: 10px;
+}
+.n1{
+    margin-left: 41px;
+}
+
+.navbar-light .navbar-nav .nav-link
+ {
+ color: gainsboro;
+ font-size: 20px;
+ } 
+ /* .navbar-nav{
+     padding-left: 50px;
+ } */
+ 
+ @media (min-width: 1366px){
+  /* .navbar-nav {
+    padding-left: 60px;
+   } */
+}
+@media (min-width: 1440px){
+  .n1{
+    margin-left: 83px;
+  }
+  /* .navbar-nav{
+    padding-left: 80px;
+} */
+}
+@media (min-width: 1536px){
+  .n1{
+    margin-left: 330px;
+  }
+  
+}
+@media (min-width: 1600px){
+  .n1{
+    margin-left: 330px;
+  }
+ 
+}
+@media (min-width: 1920px){
+  .n1{
+    margin-left: 340px;
+  }
+ 
+}
+.navbar-expand-lg .navbar-nav .nav-link
+{
+  padding-right: 30px;
+  padding-left:10px;
+}
+.btn-outline-success{
+  color: white;
+  border-color:white;
+  width:90px;
+   height: 34px;
+   padding-top: 4px;
+}
+.navbar-light .navbar-toggler-icon{
+  background-image:url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.navbar-light .navbar-toggler{
+  color:transparent;
+  border-color:transparent;
+}
+.navbar-light .navbar-toggler.hover{
+  color:transparent;
+  border-color:transparent;
+}
+
+#app{
+  line-height:2.6;
+  font-size:19px;
+}
+.btn{
+  margin-top:10px;
+}
+@media(min-width:350px) and (max-width:450px){
+  nav>.navbar-toggler{
+    padding: 5px;
+}
+#app
+{
+  margin-left: auto;padding-left: 0px;padding-right: 0px;
+}
+}
+
+.navbar-toggler
+{
+  padding:.25rem .75rem
+}
+@media(min-width:350px) and (max-width:450px){
+  .container .navbar-light .navbar-nav .nav-link
+ {
+ color:gainsboro;
+ font-size: 15px;
+ } 
+  .nav-item>.btn{
+    font-size: 15px;
+  }
+  .nav-item>.btn-outline-success{
+    width:70px;
+    height:37px;
+    padding-left: 9px;padding-right: 9px;
+  }
+  
+  button:focus{
+    /* border:1px solid green !important; */
+    outline: none !important;
+   }
+
+}
+

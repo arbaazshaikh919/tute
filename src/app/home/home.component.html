@@ -1,0 +1,217 @@
+
+
+<div >
+<div class="page-wrapper">
+<div class="bg-img-1 p-t-200 p-b-120">
+    <app-navbar ></app-navbar>
+    <div class="container main-box">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="wrapper wrapper--w900">
+                    <br>
+                    <br>
+                    <br>
+                    <h3>You can master anything. Where do you want to start?</h3>
+                       
+
+                </div>
+            </div>
+           
+        </div>
+        <div class="row boxline">
+                <div class="col-md-6">
+                             <select class="box">
+                                 <option style="color:black;" value="0">-- Type of Session --</option>
+                                 <option style="color:black;"  value="1">Recorder Session</option>
+                                 <option style="color:black;"  value="2">Live Session</option>
+                             </select>
+                       
+                </div>
+                <div class="col-md-6">
+                        <select class="box">
+                                <option style="color:black;" value="0">-- Select Syllabus --</option>
+                                <option *ngFor="let s of this.user.level.model.list" value="{{s.value}}" style="color:black;">{{s.text}}</option>
+                        </select>
+                  
+           </div>
+               
+            </div>
+            <div class="row boxline">
+                    <div class="col-md-6">
+                                 <select class="box">
+                                        <option style="color:black;"  value="0">-- Select Class --</option>
+                                        <option *ngFor="let s of this.user.class.model.list" value="{{s.value}}" style="color:black;">{{s.text}}</option>
+                                  
+                                 </select>
+                           
+                    </div>
+                    <div class="col-md-6">
+                            <select class="box">
+                                <option style="color:black;"  value="0">-- Select Subject --</option>
+                                <option *ngFor="let s of this.user.subject.model.list" value="{{s.value}}" style="color:black;">{{s.text}}</option>
+                            </select>
+                      
+               </div>
+                   
+                </div>
+                <div class="row boxline">
+                        <div class="col-md-12">
+                              <button id="get">Get Started</button>
+                               
+                        </div>
+                     
+                       
+                    </div>
+    </div>
+</div>
+</div>
+
+<div id="section2dsk">
+
+
+<div class="container">
+    <div class="row">
+        <div class="text-left col-md sec">
+            <h2 class="font-weight-bold1" style="font-family:Product Sans;">Why learn on Tute?</h2>
+            <p class="content">Choose better education over mere <br> popularity & other cliched reasons, <br> Compare from curated options and <br> make better
+                decisions.
+            </p>
+            <div class="btncenter">
+                <button class="btn btn-outline-success" type="submit">Watch Sample Lesson</button>
+            </div>
+            
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="text-center col-md videosection">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Get Complete support-->
+
+</div>
+<br>
+
+
+<div id="schoolingcouncildsk">
+<div class="bg-img-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 sec1">
+               
+                    <img src="/assets/template/universityimages2.jpg" class="mr-2 point-img" alt="Right program">
+             
+              
+            </div>
+            <div class="col-md-6" style="padding-top: 20px;padding-left: 100px;padding-right: 0px;">
+                <h2 class="head">See Tute in action</h2>
+                <div class="section3">
+                      
+                    <i class="fa fa-check checkmark" style=" color: white;
+                    font-size: 20px;
+                    position: relative;
+                    bottom: -4.5px;
+                    left: 23px;"></i>
+                    <i class="fa fa-circle" style="color:orange;font-size: 30px;"></i>
+                    
+                    
+                    <span style="padding-left: 9px;">45-minute to an hour live lessons delivered by qualified teachers on webcam using the Tute Learning Cloud platform.</span>
+                    <hr style="margin-bottom:9px;margin-top:9px;margin-right: 0px;margin-left: 15px;">
+                </div>
+                <br>
+                <div class="section4">
+                        <i class="fa fa-check checkmark" style=" color: white;
+                        font-size: 20px;
+                        position: relative;
+                        bottom: -4.5px;
+                        left: 23px;"></i>
+                        <i class="fa fa-circle" style="color:orange;font-size: 30px;"></i>
+                        <span style="padding-left: 9px;">Up to 12 young people taught online in a group lesson.</span>
+                    <hr style="margin-bottom:9px;margin-top:9px;margin-right: 0px;margin-left: 15px;">
+                </div>
+                <br>
+                <div class="section4">
+                        <i class="fa fa-check checkmark" style=" color: white;
+                        font-size: 20px;
+                        position: relative;
+                        bottom: -4.5px;
+                        left: 23px;"></i>
+                        <i class="fa fa-circle" style="color:orange;font-size: 30px;"></i>
+                        <span style="padding-left: 9px;">Students communicate by voice (microphone on PC),live chat and using an interactive whiteboard.</span>
+                    <hr style="margin-bottom:9px;margin-top:9px;margin-right: 0px;margin-left: 15px;">
+                </div>
+              
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--mobile view why choose schoolingcouncil -->
+<div id="schoolingcouncilmbl">
+        <div class="bg-img-2-mbl">
+                <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 sec1">
+                                <div class="heading1">
+                                    <p>Why choose Schooling Council?</p>
+                                </div>
+                                <div class="content1">
+                                    <p>Empowering thousands of students in making the right career and college decision.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="padding-left: 0px;padding-right: 30px;text-align: center;">
+                                <div class="section3">
+                                    <img src="/assets/template/profile-building.svg" alt="" style="height: 40px;">
+                                    <b>Profile</b> building
+                                    <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
+                                </div>
+                                <div class="section3">
+                                        <img src="/assets/template/mentor-assistance.svg" alt="" style="height: 40px;padding-left: 20px;">
+                                        <b>Mentor</b> assistance
+                                        <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
+                                    </div>
+                                <div class="section3">
+                                    <img src="/assets/template/quality-training.svg" alt="" style="height: 40px;">
+                                    <b>Quality</b> training
+                                    <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
+                                </div>
+                                <div class="section3">
+                                    <img src="/assets/template/loan-assistance.svg" alt="" style="height: 40px;">
+                                    <b>Loan</b> assistance
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="text-left col-md sec">
+            <h2 class="font-weight-bold1" style="font-family:Product Sans;">Real teachers <br>real engagement.</h2>
+            <p class="content">Tute is different. Our faculty of experienced<br>teachers deliver high quality lessons,via the<br>innovative Tute Learning Cloud platform.
+            </p>
+            <br>
+            <p class="content">Tute is different. Our faculty of experienced<br>teachers deliver high quality lessons,via the<br>innovative Tute Learning Cloud platform.
+            </p>
+         
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="text-center col-md videosection">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
