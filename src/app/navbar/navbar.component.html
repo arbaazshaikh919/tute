@@ -12,14 +12,14 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Recorded Sessions</a>
+                    <a class="nav-link" href="/recordedSession">Recorded Sessions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" >Live Sessions</a>
+                    <a class="nav-link" routerLink="/liveSession">Live Sessions</a>
                 </li>
               
                 <li class="nav-item">
-                    <a class="nav-link" >Book a Trial</a>
+                    <a class="nav-link" routerLink="/bookTrail">Book a Trial</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact us</a>
@@ -49,14 +49,14 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Recorded Sessions</a>
+                    <a class="nav-link" href="/recordedSession">Recorded Sessions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" >Live Sessions</a>
+                    <a class="nav-link" routerLink="/liveSession">Live Sessions</a>
                 </li>
               
                 <li class="nav-item">
-                    <a class="nav-link" >Book a Trial</a>
+                    <a class="nav-link" routerLink="/bookTrail">Book a Trial</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact us</a>
@@ -72,82 +72,72 @@
 
 <!--Other pages header-->
 <ng-template #content let-modal>
+    <div class="container">
+        <div class="row main">
+            <div class="col-md-6 bg-popup">
+                    <img src="/assets/tute-logo.png" width="100" alt="logo" class="logo-popup">
+                <p class="white">Learn lessons online in small group <br> by highly qualified teachers <br>at an affordable cost.</p>
 
-<div class="container">
-    <div class="row main">
-        <div class="col-md-6 bg-popup">
-                <img src="/assets/tute-logo.png" width="100" alt="logo" class="logo-popup">
-            <p class="white">Learn lessons online in small group <br> by highly qualified teachers <br>at an affordable cost.</p>
-
-            <p class="white1">By logging into Tute, you agree to our <br><u> Terms of use & Privacy Policy</u></p>
-        </div>
-        <div class="col-md-6 bg-popup1">
-                <button type="button" id="login-close" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-            <h2 class="login">Login</h2>
-            <p class="signup">Don't have an account?<a (click)="open1(content1)" class="orange"> Sign up</a></p>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <input type="text"  formControlName="username" class="form-control input-popup" placeholder="Email ID"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                            <div class="require" *ngIf="f.username.errors.required">*Username is required</div>
-                          </div>
-                    <input type="text" formControlName="password" class="form-control input-popup"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div class="require" *ngIf="f.password.errors.required">*Password is required</div>
-                          </div>
-                    <button type="submit" class="input-btn">Login</button>
-            </form>
-            
+                <p class="white1">By logging into Tute, you agree to our <br><u> Terms of use & Privacy Policy</u></p>
             </div>
-    </div>
-</div>
-
-     
-      </ng-template>
-      
-   
-      
-
-      <ng-template #content1 #content2 let-modal1>
-
-        <div class="container">
-            <div class="row main">
-                <div class="col-md-6 bg-popup">
-                        <img src="/assets/tute-logo.png" width="100" alt="logo" class="logo-popup">
-                    <p class="white">Learn lessons online in small group <br> by highly qualified teachers <br>at an affordable cost.</p>
-        
-                    <p class="white1">By logging into Tute, you agree to our <br><u> Terms of use & Privacy Policy</u></p>
-                </div>
-                <div class="col-md-6 bg-popup1">
-                        <button type="button" id="register-close" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                    <h2 class="login">Sign Up</h2>
-                    <p class="signup">Already a member?<a (click)="open(content)" class="orange"> Log in</a></p>
-                    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                    <input type="text"  formControlName="fname" class="form-control input-rpopup" placeholder="First Name"  [ngClass]="{ 'is-invalid': rsubmitted && r.fname.errors }"/>
-                                    <div *ngIf="rsubmitted && r.fname.errors" class="invalid-feedback">
-                                    <div class="require1" *ngIf="r.fname.errors.required">*First Name is required</div>
-                                    </div>
+            <div class="col-md-6 bg-popup1">
+                    <button type="button" id="login-close" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                <h2 class="login">Login</h2>
+                <p class="signup">Don't have an account?<a (click)="open1(content1)" class="orange"> Sign up</a></p>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <input type="text"  formControlName="username" class="form-control input-popup" placeholder="Email ID"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div class="require" *ngIf="f.username.errors.required">*Username is required</div>
                             </div>
-                            <div class="col-md-6">
-                                    <input type="text"  formControlName="lname" class="form-control input-rpopup" placeholder="Last Name"  [ngClass]="{ 'is-invalid': rsubmitted && r.lname.errors }"/>
-                                    <div *ngIf="rsubmitted && r.lname.errors" class="invalid-feedback">
-                                    <div class="require1" *ngIf="r.lname.errors.required">*Last Name is required</div>
-                                    </div>
+                        <input type="text" formControlName="password" class="form-control input-popup"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div class="require" *ngIf="f.password.errors.required">*Password is required</div>
+                            </div>
+                        <button type="submit" class="input-btn">Login</button>
+                </form>
+                
+                </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #content1 #content2 let-modal1>
+    <div class="container">
+        <div class="row main">
+            <div class="col-md-6 bg-popup">
+                    <img src="/assets/tute-logo.png" width="100" alt="logo" class="logo-popup">
+                <p class="white">Learn lessons online in small group <br> by highly qualified teachers <br>at an affordable cost.</p>
+    
+                <p class="white1">By logging into Tute, you agree to our <br><u> Terms of use & Privacy Policy</u></p>
+            </div>
+            <div class="col-md-6 bg-popup1">
+                <button type="button" id="register-close" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="login">Sign Up</h2>
+                <p class="signup">Already a member?<a (click)="open(content)" class="orange"> Log in</a></p>
+                <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                                <input type="text"  formControlName="fname" class="form-control input-rpopup" placeholder="First Name"  [ngClass]="{ 'is-invalid': rsubmitted && r.fname.errors }"/>
+                                <div *ngIf="rsubmitted && r.fname.errors" class="invalid-feedback">
+                                <div class="require1" *ngIf="r.fname.errors.required">*First Name is required</div>
                                 </div>
                         </div>
+                        <div class="col-md-6">
+                                <input type="text"  formControlName="lname" class="form-control input-rpopup" placeholder="Last Name"  [ngClass]="{ 'is-invalid': rsubmitted && r.lname.errors }"/>
+                                <div *ngIf="rsubmitted && r.lname.errors" class="invalid-feedback">
+                                <div class="require1" *ngIf="r.lname.errors.required">*Last Name is required</div>
+                                </div>
+                            </div>
+                    </div>
 
-                        <div class="row">
-
-                                <div class="col-md-6">
-                           
-                           
+                    <div class="row">
+                        <div class="col-md-6">
                             <input type="text"  formControlName="pwd" class="form-control input-rpopup" placeholder="Password"  [ngClass]="{ 'is-invalid': rsubmitted && r.pwd.errors }"/>
                             <div *ngIf="rsubmitted && r.pwd.errors" class="invalid-feedback">
                             <div class="require1" *ngIf="r.pwd.errors.required">*Password is required</div>
@@ -155,41 +145,36 @@
                         </div>
                         <div class="col-md-6">
                             <input type="text"  formControlName="cpwd" class="form-control input-rpopup" placeholder="Confirm Password"  [ngClass]="{ 'is-invalid': rsubmitted && r.cpwd.errors }"/>
-                            <div *ngIf="rsubmitted && r.cpwd.errors" class="invalid-feedback">
-                            <div class="require1" *ngIf="r.cpwd.errors.required">*Confirm Password is required</div>
+                                <div *ngIf="rsubmitted && r.cpwd.errors" class="invalid-feedback">
+                                <div class="require1" *ngIf="r.cpwd.errors.required">*Confirm Password is required</div>
                             </div>
                         </div>
                     </div>
 
-                            <input type="text"  formControlName="email" class="form-control input-r1popup" placeholder="Email ID"  [ngClass]="{ 'is-invalid': rsubmitted && r.email.errors }"/>
-                            <div *ngIf="rsubmitted && r.email.errors" class="invalid-feedback">
-                            <div class="require1" *ngIf="r.email.errors.required">*Email ID is required</div>
-                            </div>
+                    <input type="text"  formControlName="email" class="form-control input-r1popup" placeholder="Email ID"  [ngClass]="{ 'is-invalid': rsubmitted && r.email.errors }"/>
+                    <div *ngIf="rsubmitted && r.email.errors" class="invalid-feedback">
+                        <div class="require1" *ngIf="r.email.errors.required">*Email ID is required</div>
+                    </div>
 
-                            <div class="row">
-
-                                    <div class="col-md-6">
-                               
+                    <div class="row">
+                        <div class="col-md-6">
                             <input type="text"  formControlName="phone" class="form-control input-rpopup" placeholder="Phone Number"  [ngClass]="{ 'is-invalid': rsubmitted && r.phone.errors }"/>
                             <div *ngIf="rsubmitted && r.phone.errors" class="invalid-feedback">
-                            <div class="require1" *ngIf="r.phone.errors.required">*Phone Number is required</div>
+                                <div class="require1" *ngIf="r.phone.errors.required">*Phone Number is required</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <input type="date"  formControlName="dob" class="form-control input-rpopup" placeholder="Date of birth"  [ngClass]="{ 'is-invalid': rsubmitted && r.dob.errors }"/>
                             <div *ngIf="rsubmitted && r.dob.errors" class="invalid-feedback">
-                            <div class="require1" *ngIf="r.dob.errors.required">*DOB is required</div>
+                                <div class="require1" *ngIf="r.dob.errors.required">*DOB is required</div>
                             </div>
                         </div>
                     </div>
-                            <button type="submit" class="input-rbtn">Login</button>
-                    </form>
-                    
-                    </div>
+                    <button type="submit" class="input-rbtn">Login</button>
+                </form>
             </div>
         </div>
-        
-             
-              </ng-template>
+    </div>   
+</ng-template>
               
-              <!-- First Name, Last Name, Password, Confirm Password, Email ID, Phone Number, Date of Birth -->
+<!-- First Name, Last Name, Password, Confirm Password, Email ID, Phone Number, Date of Birth -->
