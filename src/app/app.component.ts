@@ -9,36 +9,53 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   title = 'app';
  
-  constructor(public router: Router,private user : UserService)
-  {
+  constructor(public router: Router,private dataService : UserService){
+    this.bootStrapLoaders();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/home' || event.url === '/') {
        
-           this.user.hideElement = true;
-           this.user.hideElement0 = false;
+          this.dataService.hideElement = true;
+          this.dataService.hideElement0 = false;
 
         } else {
-           this.user.hideElement = false;
-           this.user.hideElement0 = true;
-
+          this.dataService.hideElement = false;
+          this.dataService.hideElement0 = true;
         }
       }
     });
 
   }
   ngOnInit() {
-  
-  
- this.user.getNetworkInfo()
- .subscribe((response) => {
-  console.log('Network Info', response);
-  // this.user.subject = response.response;
-},
-  err => {
-    console.log('Network Info', err);
   }
-);
-  
+
+  public bootStrapLoaders(){
+
+    // Fetching API Request
+    this.dataService.getSubject().subscribe((response) => {
+      this.dataService.subject = response.response;
+    }, err => {
+      console.log('Subjects', err);
+    });
+
+
+    this.dataService.getClass().subscribe((response) => {
+      this.dataService.class = response.response;
+    }, err => {
+      console.log('class', err);
+    });
+
+    this.dataService.getLevel().subscribe((response) => {
+      this.dataService.level = response.response;
+    }, err => {
+      console.log('class', err);
+    });
+
+    // Getting Network Information
+    this.dataService.getNetworkInfo().subscribe((response) => {
+      console.log('Network Info', response);
+    }, err => {
+      console.log('Network Info', err);
+    });
   }
 }

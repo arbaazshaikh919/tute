@@ -24,9 +24,13 @@
 .desc3{
     padding-top: 28px;
 }
+.desc3 img{
+    margin-top: -5px;
+}
 
 .desc3 > .sess-spl-btn{
-    width: 150px;
+    width: 180px;
+    height: 30px;
     background-color: transparent;
     border: 1px solid #1464A6;
     color: #1464A6;
@@ -35,6 +39,9 @@
 
 .desc4{
     padding-top: 28px;    
+}
+.desc4 img{
+    margin-top: -7px;
 }
 
 .check-box{
@@ -132,6 +139,9 @@
 .calcs span .amount{
     font-size:28px;
 }
+.calcs span img{
+    margin-top: -8px;
+}
 .calcs button{
     width: 180px;
     height: 50px;
@@ -139,4 +149,73 @@
     border-radius: 8px;
     color:#fff;
     border: none;
+}
+
+.calcs button img{
+    margin-top: -4px;
+}
+
+.tab-desc{
+    padding: 40px 30px 10px 30px;
+}
+
+.tab-desc > .tab-desc-header h4{
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+
+.tab-desc ul li{
+    list-style-type: none;
+}
+
+.tab-desc ul li img{
+    width: 17px;
+    margin-right: 7px;
+}
+
+.video-dialog{
+    width: 70%;
+    height: 600px;
+    background-color: #FFFFFF;
+    position: absolute;
+    z-index: 9999;
+    top:30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    -webkit-box-shadow: -1px 2px 24px -1px rgba(153,153,153,1);
+    -moz-box-shadow: -1px 2px 24px -1px rgba(153,153,153,1);
+    box-shadow: -1px 2px 24px -1px rgba(153,153,153,1);
+}
+
+.video-dialog > .close-dialog{
+    width:100%;
+}
+
+.video-dialog > .close-dialog span{
+    float: right;
+    font-size: 50px;
+    font-weight: bold;
+    /* padding-right: 19px; */
+    cursor: pointer;
+    -webkit-transition: .4s ease;
+    -moz-box-transition: .4s ease;
+    transition: .4s ease;
+    position: relative;
+    right: -40px;
+    top: -16px;
+    color: #FFFFFF;
+}
+
+.video-dialog > .close-dialog span:hover{
+    color: rgb(230, 94, 94);
+    -webkit-transition: .4s ease;
+    -moz-box-transition: .4s ease;
+    transition: .4s ease;
+}
+
+.video-dialog .DialogContent iframe{
+    margin-top: -60px;
 }

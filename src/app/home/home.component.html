@@ -1,98 +1,77 @@
-
-
-<div >
 <div class="page-wrapper">
-<div class="bg-img-1 p-t-200 p-b-120">
-    <app-navbar ></app-navbar>
-    <div class="container main-box">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="wrapper wrapper--w900">
-                    <br>
-                    <br>
-                    <br>
-                    <h3>You can master anything. Where do you want to start?</h3>
-                       
-
+    <div class="bg-img-1 p-t-200 p-b-120">
+        <app-navbar ></app-navbar>
+        <div class="container main-box">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="wrapper wrapper--w900">
+                        <h3>You can master anything. Where do you want to start?</h3>
+                    </div>
                 </div>
-            </div>
-           
-        </div>
-        <div class="row boxline">
-                <div class="col-md-6">
-                             <select class="box">
-                                 <option style="color:black;" value="0">-- Type of Session --</option>
-                                 <option style="color:black;"  value="1">Recorder Session</option>
-                                 <option style="color:black;"  value="2">Live Session</option>
-                             </select>
-                       
-                </div>
-                <div class="col-md-6">
-                        <select class="box">
-                                <option style="color:black;" value="0">-- Select Syllabus --</option>
-                                <option *ngFor="let s of this.user.level.model.list" value="{{s.value}}" style="color:black;">{{s.text}}</option>
-                        </select>
-                  
-           </div>
-               
+            
             </div>
             <div class="row boxline">
-                    <div class="col-md-6">
-                                 <select class="box">
-                                        <option style="color:black;"  value="0">-- Select Class --</option>
-                                        <option *ngFor="let s of this.user.class.model.list" value="{{s.value}}" style="color:black;">{{s.text}}</option>
-                                  
-                                 </select>
-                           
-                    </div>
-                    <div class="col-md-6">
-                            <select class="box">
-                                <option style="color:black;"  value="0">-- Select Subject --</option>
-                                <option *ngFor="let s of this.user.subject.model.list" value="{{s.value}}" style="color:black;">{{s.text}}</option>
-                            </select>
-                      
-               </div>
-                   
+                <div class="col-md-6">
+                    <select class="box">
+                        <option class="color-black" value="0">-- Type of Session --</option>
+                        <option class="color-black" value="1">Recorder Session</option>
+                        <option class="color-black" value="2">Live Session</option>
+                    </select>
                 </div>
-                <div class="row boxline">
-                        <div class="col-md-12">
-                              <button id="get">Get Started</button>
-                               
-                        </div>
-                     
-                       
-                    </div>
+                <div class="col-md-6">
+                    <select class="box">
+                        <option value="0">-- Select Syllabus --</option>
+                        <option class="color-black" *ngFor="let s of this.user.level.model.list" value="{{s.value}}">{{s.text}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row boxline">
+                <div class="col-md-6">
+                    <select class="box">
+                        <option value="0">-- Select Class --</option>
+                        <option class="color-black" *ngFor="let s of this.user.class.model.list" value="{{s.value}}">{{s.text}}</option>
+                    </select>
+                        
+                </div>
+                <div class="col-md-6">
+                    <select class="box">
+                        <option  value="0">-- Select Subject --</option>
+                        <option class="color-black" *ngFor="let s of this.user.subject.model.list" value="{{s.value}}">{{s.text}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row boxline">
+                <div class="col-md-12">
+                    <button id="get">Get Started</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </div>
 
 <div id="section2dsk">
-
-
-<div class="container">
-    <div class="row">
-        <div class="text-left col-md sec">
-            <h2 class="font-weight-bold1" style="font-family:Product Sans;">Why learn on Tute?</h2>
-            <p class="content">Choose better education over mere <br> popularity & other cliched reasons, <br> Compare from curated options and <br> make better
-                decisions.
-            </p>
-            <div class="btncenter">
-                <button class="btn btn-outline-success" type="submit">Watch Sample Lesson</button>
+    <div class="container">
+        <div class="row">
+            <div class="text-left col-md sec">
+                <h2 class="font-weight-bold1" style="font-family:Product Sans;">Why learn on Tute?</h2>
+                <p class="content">Choose better education over mere <br> popularity & other cliched reasons, <br> Compare from curated options and <br> make better
+                    decisions.
+                </p>
+                <div class="btncenter">
+                    <button class="btn btn-outline-success" type="submit">Watch Sample Lesson</button>
+                </div>
+                
             </div>
-            
-        </div>
-        <div class="col-md-1">
-        </div>
-        <div class="text-center col-md videosection">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+            <div class="col-md-1">
+            </div>
+            <div class="text-center col-md videosection">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<!--Get Complete support-->
-
+    <!--Get Complete support-->
 </div>
 <br>
 
@@ -209,9 +188,5 @@
             </div>
         </div>
     </div>
-</div>
-
-
-
 </div>
 
