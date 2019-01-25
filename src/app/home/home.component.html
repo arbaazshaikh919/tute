@@ -10,41 +10,43 @@
                 </div>
             
             </div>
-            <div class="row boxline">
-                <div class="col-md-6">
-                    <select class="box">
-                        <option class="color-black" value="0">-- Type of Session --</option>
-                        <option class="color-black" value="1">Recorder Session</option>
-                        <option class="color-black" value="2">Live Session</option>
-                    </select>
+            <form action="" [formGroup]="advanceFilterForm">
+                <div class="row boxline">
+                    <div class="col-md-6">
+                        <select class="box" formControlName="SessionType">
+                            <option class="color-black" value="01">-- Type of Session --</option>
+                            <option class="color-black" value="1">Recorder Session</option>
+                            <option class="color-black" value="2">Live Session</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="box" formControlName="Syllabus">
+                            <option value="0">-- Select Syllabus --</option>
+                            <option class="color-black" *ngFor="let syllabus of this.dataService.level.model.list"  value="{{syllabus.text}}">{{syllabus.text}}</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <select class="box">
-                        <option value="0">-- Select Syllabus --</option>
-                        <option class="color-black" *ngFor="let s of this.user.level.model.list" value="{{s.value}}">{{s.text}}</option>
-                    </select>
+                <div class="row boxline">
+                    <div class="col-md-6">
+                        <select class="box" formControlName="classes">
+                            <option value="01">-- Select Class --</option>
+                            <option class="color-black" *ngFor="let classes of this.dataService.staticClasses.list" value="{{classes.value}}">{{classes.text}}</option>
+                        </select>
+                            
+                    </div>
+                    <div class="col-md-6">
+                        <select class="box" formControlName="Subject">
+                            <option  value="0">-- Select Subject --</option>
+                            <option class="color-black" *ngFor="let subject of this.dataService.staticSubject.list" value="{{subject.value}}">{{subject.text}}</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="row boxline">
-                <div class="col-md-6">
-                    <select class="box">
-                        <option value="0">-- Select Class --</option>
-                        <option class="color-black" *ngFor="let s of this.user.class.model.list" value="{{s.value}}">{{s.text}}</option>
-                    </select>
-                        
+                <div class="row boxline">
+                    <div class="col-md-12">
+                        <button id="get" (click)="renderSearchResults()">Get Started</button>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <select class="box">
-                        <option  value="0">-- Select Subject --</option>
-                        <option class="color-black" *ngFor="let s of this.user.subject.model.list" value="{{s.value}}">{{s.text}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row boxline">
-                <div class="col-md-12">
-                    <button id="get">Get Started</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

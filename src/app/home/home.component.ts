@@ -18,15 +18,41 @@ export class HomeComponent implements OnInit {
   @Input() hideElement:any;
   closeResult: string;
 
-  constructor(private _router:Router,private formBuilder: FormBuilder,private user: UserService) { 
-    this.form = this.formBuilder.group({
-     search:[null]
-    });
+  SessionType = null;
+  Syllabus = null;
+  classes = null;
+  Subject = null;
+  advanceFilterForm: FormGroup;
 
+
+  constructor(private router: Router, route: ActivatedRoute, private dataService: UserService, private FormBuilder: FormBuilder) { 
+    this.renderAdvanceFilterForm()
   }
    
   ngOnInit() { }
 
-  
+  public renderAdvanceFilterForm() {
+    this.advanceFilterForm = this.FormBuilder.group({
+      SessionType: new FormControl('01', [Validators.required, Validators.maxLength(1)]),
+      Syllabus: new FormControl('0', [Validators.required, Validators.minLength(2)]),
+      classes: new FormControl('01', [Validators.required, Validators.maxLength(1)]),
+      Subject: new FormControl('0', [Validators.required, Validators.minLength(2)]),
+    });
+  }
+
+  public renderSearchResults(){
+    if (this.advanceFilterForm.valid){
+      this.router.navigate(['/recordedSession'], {
+        queryParams:{
+          '_sessTy' : this.advanceFilterForm.controls.SessionType.value,
+          '_sylB': this.advanceFilterForm.controls.Syllabus.value,
+          '_cls': this.advanceFilterForm.controls.classes.value,
+          '_suB': this.advanceFilterForm.controls.Subject.value,
+        }
+      })
+    }else{
+      alert('Please fill all required fields');
+    }
+  }
 
 }

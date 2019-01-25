@@ -122,3 +122,10 @@ a, button{
 .ng-invalid:not(form){
     border: 1px solid rgb(199, 65, 65);
 }
+
+input:focus{
+    outline: none !important;
+}
+select:focus{
+    outline: none !important;
+}

@@ -2,6 +2,7 @@ import 'rxjs/add/operator/map';
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { UserService } from '../services/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, Form } from '@angular/forms';
 import { element } from '@angular/core/src/render3/instructions';
 
@@ -33,6 +34,10 @@ export class RecordedSessionComponent implements OnInit {
   public SearchedRes:any;
   public selectionBuget = [];
   public selectionBugetList = [];
+  public _sessType: any;
+  public _Syllabus: any;
+  public _Class: any;
+  public _Subject: any;
 
   public subTotal = null;
   public discount = null;
@@ -40,13 +45,25 @@ export class RecordedSessionComponent implements OnInit {
 
   public BaseURL = "http://dev.tute.in/api/Lesson/GetLessionList?";
 
-  constructor(private dataService: UserService, private FormBuilder: FormBuilder) {
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private dataService: UserService, 
+    private FormBuilder: FormBuilder) {
     this.renderAdvanceFilterForm();
     this.renderSelectionListForm();
   }
   
   ngOnInit() {
     document.getElementById('video-dialog').style.display = 'none';
+    this.route.queryParams.subscribe((QueryParams) => {
+      this._sessType = QueryParams['_sessTy'] 
+      this._Syllabus = QueryParams['_sylB'] 
+      this._Class = QueryParams['_cls'] 
+      this._Subject =  QueryParams['_suB']
+    });
+
+    this.parseGetStarted();
   }
 
   public renderAdvanceFilterForm(){
@@ -125,21 +142,10 @@ export class RecordedSessionComponent implements OnInit {
         this.selectionBuget.push(bucketData);
         this.showTotalBanner = true;
       } else if (items.value === false){
+        this.total -= this.subTotal - (this.discount * this.subTotal) / 100;
+        this.discount -= this.selectionBugetList[index].discount;
         this.subTotal -= this.selectionBugetList[index].price;        
         this.selectionBuget.splice(index, 1);
-      }
-      
-      let selectionChecker = document.getElementsByName('selectionChecker[]');
-      for (let index = 0; index < selectionChecker.length; index++) {
-        this.showTotalBanner = true;
-        if (!selectionChecker[index].checked){
-          // this.showTotalBanner = false;
-          this.selectionBuget.splice(1);
-          this.subTotal = 0;
-          this.discount = 0;
-          this.total = 0;
-        }
-        // console.log(this.showTotalBanner);
       }
     });
     console.log(this.selectionBuget);
@@ -153,6 +159,26 @@ export class RecordedSessionComponent implements OnInit {
   public dialogOpen(_URL){
     document.getElementById('video-dialog').style.display = 'block';
     this.sampleVideoURL = _URL;
+  }
+
+  public parseGetStarted(){
+    
+    this._sessType;
+    this._Syllabus;
+    this._Class;
+    this._Subject;
+    if (this._sessType != '' && this._Syllabus != '' && this._Class != '' && this._Subject){
+      this.advanceFilterForm.controls.Syllabus.setValue(this._Syllabus);
+      this.advanceFilterForm.controls.Subject.setValue(this._Subject);
+      this.advanceFilterForm.controls.classes.setValue(this._Class);
+      if (this._sessType == 1) {
+        this.activeRecorededClass = true;
+        this.getSessionType('Recoreded');
+      } else if (this._sessType == 2) {
+        this.activeLiveClass = true;
+        this.getSessionType('Live');
+      }
+    }
   }
 
 }
