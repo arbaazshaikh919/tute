@@ -11,42 +11,55 @@ import { PasswordValidation } from '../password.validation';
 })
 export class NavbarComponent implements OnInit {
 
+  public isActivatedMultiLevelMenu: boolean = false;
+  public LiveSessionMenu: boolean = false;
+  public RecorededSessionMenu: boolean = false;
+  public ClasslevelBanner: boolean = false;
+  public subjectLevelBanner: boolean = false;
+
+  public multiLevelMenuValues = [];
+  public syllabusMenuValue = [];
+  public subjectMenuValue = [];
+  public classMenuValue = [];
+  public sessionTransferValue = null;
+
  loginForm: FormGroup;
  registerForm: FormGroup;
   submitted = false;
   rsubmitted = false;
   closeResult: string;
-  register = 
-  {'IsEmailNotificationsEnabled': false,
-  'NotificationRecipients': '',
-  'OverrideSchoolNotification': false,
-  'balance': 0,
-  'confirmPassword': '1234',
-  'contact': {'method': ''},
-  'method': '',
-  'county': '',
-  'dateOfBirth': '06-07-2005',
-  'displayName': 'amar',
-  'email': '',
-  'ethnicity': 'AOTH',
-  'firstName': 'Amar',
-  'gender': '1',
-  'homePhone': '',
-  'initialPassword': '1234',
-  'isVAEnabled': false,
-  'lastName': 'Singh',
-  'mobilePhone': '',
-  'network_Id': '2',
-  'postCode': '',
-  'primaryRole': 'Student',
-  'school': '2',
-  'streetAddress': '',
-  'studentGroups': [],
-  'studentSchool': {'id': '2'},
-  'town': '',
-  'user': {'role': {'selection': 'Student'}},
-  'userName': 'amar.singh@tute.in',
-  'year': '8'}
+  register = {
+    'IsEmailNotificationsEnabled': false,
+    'NotificationRecipients': '',
+    'OverrideSchoolNotification': false,
+    'balance': 0,
+    'confirmPassword': '1234',
+    'contact': {'method': ''},
+    'method': '',
+    'county': '',
+    'dateOfBirth': '06-07-2005',
+    'displayName': 'amar',
+    'email': '',
+    'ethnicity': 'AOTH',
+    'firstName': 'Amar',
+    'gender': '1',
+    'homePhone': '',
+    'initialPassword': '1234',
+    'isVAEnabled': false,
+    'lastName': 'Singh',
+    'mobilePhone': '',
+    'network_Id': '2',
+    'postCode': '',
+    'primaryRole': 'Student',
+    'school': '2',
+    'streetAddress': '',
+    'studentGroups': [],
+    'studentSchool': {'id': '2'},
+    'town': '',
+    'user': {'role': {'selection': 'Student'}},
+    'userName': 'amar.singh@tute.in',
+    'year': '8'
+  }
 
 
   constructor(private formBuilder: FormBuilder,private modalService: NgbModal,private _router:Router,private user: UserService) { 
@@ -205,14 +218,58 @@ export class NavbarComponent implements OnInit {
           alert('User already exists, try again');
         }
       );
-
-
-
-
-
-
   }
   get f() { return this.loginForm.controls; }
   get r() { return this.registerForm.controls; }
- 
+  
+
+  public triggerMultiLevelMenu(TypeSession){
+    this.isActivatedMultiLevelMenu = true;
+    if (TypeSession == 'RecordedSession'){
+      this.RecorededSessionMenu = true;
+      this.LiveSessionMenu = false;
+      this.sessionTransferValue = 'recordedSession';
+    } else if (TypeSession == 'LiveSession'){
+      this.sessionTransferValue = 'liveSession';
+      this.LiveSessionMenu = true;
+      this.RecorededSessionMenu = false;
+    }
+  }
+
+  public triggerOffMultiLevelMenu(){
+    this.isActivatedMultiLevelMenu = false;
+    this.subjectLevelBanner = false;
+    this.ClasslevelBanner = false;
+  }
+
+  public triggerOnLevels(levelType, value){
+    let menuValues = [];
+    let sessionType_value = null;
+    if (this.sessionTransferValue == 'recordedSession') {
+      sessionType_value = 1;
+    } else if (this.sessionTransferValue == 'liveSession') {
+      sessionType_value = 2;
+    }
+    if (levelType == 'Board'){
+      this.ClasslevelBanner = true;
+      this.syllabusMenuValue.push(value);
+    } else if (levelType == 'Classes') {
+      this.subjectLevelBanner = true;
+      this.classMenuValue.push(value);
+    } else if (levelType == 'Subject') {
+      this.subjectMenuValue.push(value);
+      this._router.navigate([`/${this.sessionTransferValue}`], {
+        queryParams: {
+          '_sessTy': sessionType_value,
+          '_sylB': this.syllabusMenuValue[0],
+          '_cls': this.classMenuValue[0],
+          '_suB': this.subjectMenuValue[0],
+        }
+      });
+    }
+    // console.log(filteredMenuValues);
+  }
+
+  
+
 }

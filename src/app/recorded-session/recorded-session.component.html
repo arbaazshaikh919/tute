@@ -64,11 +64,11 @@
       <div class="col-md-12">
         <p class="ls-content-p"><strong class="ls-content-b">{{ sesstionType == '' ? '' : sesstionType }} Session</strong> | {{this.advanceFilterForm.controls.Subject.value == 0 ? '' : this.advanceFilterForm.controls.Subject.value}}</p>
       </div>
-      <mat-accordion style="width:100%;">
+      <mat-accordion style="width:100%;" *ngIf="isAvailable" >
+        <!-- <mat-expansion-panel class="accordion-style" *ngFor="let Results of this.SearchedRes"> -->
         <form [formGroup]="selectionListForm">
-          <!-- <mat-expansion-panel class="accordion-style" *ngFor="let Results of this.SearchedRes"> -->
           <mat-expansion-panel class="accordion-style" *ngFor="let Results of selectionList.controls; let i = index">
-            <mat-expansion-panel-header >
+            <mat-expansion-panel-header>
               <mat-panel-description>
                 <div class="check-box">
                   <label class="container">
@@ -115,6 +115,7 @@
             </div>
           </mat-expansion-panel>
         </form>
+
       </mat-accordion>
 
     </div>
@@ -122,21 +123,32 @@
 
   <div class="total-banner" *ngIf="showTotalBanner">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-4 calcs">
-          <span>Sub-total <img src="../../assets/icons/rupee-black.png" width="20" /> <span class="amount">{{ subTotal }}</span></span>
+      <form method="POST" name="renderFinalPayForm" id="renderFinalPayForm" action="{{this.triggerURL}}" (submit)="paymentHandler()">
+        <input type="hidden" id="encRequest" name="encRequest" value=" {{ encRequest }} ">
+        <input type="hidden" name="working_key" id="working_key" value='{{ this.dataService.workingKey }}'>
+        <input type="hidden" name="access_code" id="access_code" value='{{ this.dataService.access_code }}'>
+        <input type="hidden" name="orderid" id="orderid" value='{{ orderId }}'>
+        <input type="hidden" name="currency" id="currency" value='INR'>
+        <input type="hidden" name="amount" id="amount" value='{{ total }}'>
+        <input type="hidden" name="redirect_url" id="redirect_url" value='http://localhost4200/paymentSuccess'>
+        <input type="hidden" name="cancel_url" id="cancel_url" value='http://localhost4200/paymentFailure'>
+        <div class="row">
+          <div class="col-sm-4 calcs">
+            <span>Sub-total <img src="../../assets/icons/rupee-black.png" width="20" /> <span class="amount">{{ subTotal }}</span></span>
+          </div>
+          <div class="col-sm-4 calcs">
+            <span>Discount <img src="../../assets/icons/rupee-black.png" width="20" /> <span class="amount">{{ discount }}%</span></span>
+          </div>
+          <div class="col-sm-4 calcs">
+            <button type="submit">Total <img src="../../assets/icons/rupee.png" width="20"/> <span class="amount"> {{ total }} <img src="../../assets/icons/left-arrow.png" width="30"/> </span></button>
+          </div>
         </div>
-        <div class="col-sm-4 calcs">
-          <span>Discount <img src="../../assets/icons/rupee-black.png" width="20" /> <span class="amount">{{ discount }}%</span></span>
-        </div>
-        <div class="col-sm-4 calcs">
-          <button>Total <img src="../../assets/icons/rupee.png" width="20"/> <span class="amount"> {{ total }} <img src="../../assets/icons/left-arrow.png" width="30"/> </span></button>
-        </div>
-      </div>
+      </form>
     </div>
     
   </div>
 </div>
+
 
 <div class="video-dialog" id="video-dialog">
   <div class="close-dialog">

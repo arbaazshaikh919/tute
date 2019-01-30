@@ -156,6 +156,94 @@ background-color: white;
  /* .navbar-nav{
      padding-left: 50px;
  } */
+ .multiLevelNavBar{
+   width: 900px;
+   /* height: 800px; */
+   background-color: #FFFFFF;
+   position: absolute;
+   top:80px;
+   left:0;
+   right:0;
+   z-index: 9999;
+   -webkit-transition: .3s ease;
+   -ms-transition: .3s ease;
+   -moz-transition: .3s ease;
+   -o-transition: .3s ease;
+   transition: .3s ease;
+   /* display: none; */
+ }
+ .multiLevelNavBar .carrot{
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid white;
+    position: absolute;
+    top: -15px;
+    left: 429px;
+ }
+ .multiLevelNavBar .carrot1{
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid white;
+    position: absolute;
+    top: -15px;
+    left: 622px;
+ }
+ .multiLevelNavBar .NavBar{
+    width: 300px;
+    float:left;
+ }
+ .multiLevelNavBar .face1{
+   background-color: #FFFFFF;   
+ }
+ .multiLevelNavBar .face2{
+   background-color: #F9F9F9;
+ }
+ .multiLevelNavBar .face3{
+   background-color: #EFEFEF;
+ }
+ .multiLevelNavBar .NavBar .navbarHeader{
+   padding: 10px 0;
+   text-align: center;
+   font-size: 20px;
+   font-weight: bolder;
+ }
+
+ .multiLevelNavBar .NavBar .navbarBody{
+  width: 100%;
+ }
+ .multiLevelNavBar .NavBar .navbarBody li{
+    list-style-type: none;
+    padding: 5px 0px 5px 30px;
+    -webkit-transition: .3s ease;
+   -ms-transition: .3s ease;
+   -moz-transition: .3s ease;
+   -o-transition: .3s ease;
+   transition: .3s ease;
+   cursor: pointer;
+ }
+ .multiLevelNavBar .NavBar .navbarBody li:hover{
+   -webkit-transition: .3s ease;
+   -ms-transition: .3s ease;
+   -moz-transition: .3s ease;
+   -o-transition: .3s ease;
+   transition: .3s ease;
+   background-color: #1362A4;
+   color: #FFFFFF;
+ }
+ .multiLevelNavBar .NavBar .navbarBody li span{
+   float: right;
+   margin-right: 20px;
+ }
+ .multimenuBtn:hover .multiLevelNavBar{
+   display: block !important;   
+ }
+ .multimenuBtn:hover + .multiLevelNavBar{
+   display: block !important;   
+ }
  
  @media (min-width: 1366px){
   /* .navbar-nav {

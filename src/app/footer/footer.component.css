@@ -85,7 +85,7 @@
     left:9px;
   }
   .p-5{
-    height:120px;
+    /* height:120px; */
   }
   .container-default>.p-5>.term{
     padding-top:0px;
@@ -113,7 +113,7 @@
         text-align: center;
       }
     .p-5{
-        height:114px;
+        /* height:114px; */
       }
       .ftr{
         left:69px;
@@ -129,7 +129,7 @@
         text-align: center;
       }
     .p-5{
-        height:160px;
+        /* height:160px; */
       }
       .ftr{
           left:79px;
@@ -144,7 +144,7 @@
         text-align: center;
       }
     .p-5{
-       height:200px;
+       /* height:200px; */
       }
      .ftr{
       left:150px;
@@ -165,10 +165,10 @@
          margin-top: 400px;
     }
     .p-5>.row{
-        padding-top:180px;
+        /* padding-top:180px; */
      }
    .p-5{
-      height:50px;
+      /* height:50px; */
      }
     .ftr{
      left:350px;
@@ -616,3 +616,35 @@ ul li {
       height:auto;
     }
 } */
+
+
+/* Latest Styles */
+
+.footer{
+    background-color: #1362A4;
+}
+.main-footer-container{
+    padding: 41px 0 20px 0;
+    display: flex;
+}
+
+.main-footer-container p{
+    font-size: 20px;
+}
+
+.main-footer-container li{
+    list-style-type: none;
+    color: #ffffff;
+}
+.main-footer-container li a{
+    color: #ffffff;
+    text-decoration: none;
+}
+.footer-legal-banner{
+    background-color: #145A95;
+    padding: 20px 0 4px 0;
+}
+.legal-point p{
+    text-align: center;
+    color: #FFF;
+}

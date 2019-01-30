@@ -41,8 +41,14 @@ export class HomeComponent implements OnInit {
   }
 
   public renderSearchResults(){
+    let session = null;
     if (this.advanceFilterForm.valid){
-      this.router.navigate(['/recordedSession'], {
+      if (this.advanceFilterForm.controls.SessionType.value == 1){
+        session = 'recordedSession';
+      } else if (this.advanceFilterForm.controls.SessionType.value == 2){
+        session = 'liveSession';
+      }
+      this.router.navigate([`/${session}`], {
         queryParams:{
           '_sessTy' : this.advanceFilterForm.controls.SessionType.value,
           '_sylB': this.advanceFilterForm.controls.Syllabus.value,

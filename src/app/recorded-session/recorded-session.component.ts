@@ -4,6 +4,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, Form } from '@angular/forms';
+import * as cryptoJS from 'crypto-js';
 import { element } from '@angular/core/src/render3/instructions';
 
 
@@ -19,7 +20,18 @@ export class RecordedSessionComponent implements OnInit {
   classes = null;
   Subject = null;
   advanceFilterForm: FormGroup;
+
+  accessCode = null;
+  orderid = null;
+  currency = null;
+  amount = null;
+  redirect_url = null;
+  cancel_url = null;
+  renderFinalPayForm:FormGroup;
+
+  List = null;
   selectionListForm: FormGroup;
+
 
   // Based Variable Declaration
   public selectionCheck: boolean = false;
@@ -27,6 +39,7 @@ export class RecordedSessionComponent implements OnInit {
   public activeLiveClass: boolean = false;
   public activeRecorededClass: boolean = false;
   public showTotalBanner: boolean = false;
+  public isAvailable: boolean = false;
 
   public sessionAPIURL:string = null;
   public sampleVideoURL:string = null;
@@ -43,15 +56,20 @@ export class RecordedSessionComponent implements OnInit {
   public discount = null;
   public total = null;
 
+  //Payment Releated Variable Declaration
+  public triggerURL = null;
+  public orderId = null;
+  public encRequest = null;
+
   public BaseURL = "http://dev.tute.in/api/Lesson/GetLessionList?";
 
   constructor(
     private route: ActivatedRoute, 
-    private router: Router, 
     private dataService: UserService, 
     private FormBuilder: FormBuilder) {
     this.renderAdvanceFilterForm();
     this.renderSelectionListForm();
+    this.renderPaymentForm();
   }
   
   ngOnInit() {
@@ -64,6 +82,7 @@ export class RecordedSessionComponent implements OnInit {
     });
 
     this.parseGetStarted();
+    this.orderId = Math.floor((Math.random() * 100000000000) + 1);
   }
 
   public renderAdvanceFilterForm(){
@@ -100,11 +119,16 @@ export class RecordedSessionComponent implements OnInit {
   public parseRequiredAPI(_URL:string){
     this.dataService.getDataLiveSession(_URL).subscribe((res) => {
       this.SearchedRes = res.response.model.table;
-      this.selectionBugetList.splice(1);
-      this.SearchedRes.forEach((item) => {
-        this.selectionBugetList.push(item);
-        this.renderSelectionListForm();
-      })
+      this.selectionBugetList.splice(0, this.selectionBugetList.length);
+      if(this.SearchedRes == ''){
+        this.isAvailable = false;
+      }else{
+        this.isAvailable = true;
+        this.SearchedRes.forEach((item) => {
+          this.selectionBugetList.push(item);
+          this.renderSelectionListForm();
+        })
+      }
     });
   }
 
@@ -113,8 +137,8 @@ export class RecordedSessionComponent implements OnInit {
     this.selectionListForm = this.FormBuilder.group({
       List: this.addSelectionList(),
     });
-
   }
+
   public addSelectionList(){
     const ListArr = this.selectionBugetList.map((element) => {
       return this.FormBuilder.control(false);
@@ -142,7 +166,7 @@ export class RecordedSessionComponent implements OnInit {
         this.selectionBuget.push(bucketData);
         this.showTotalBanner = true;
       } else if (items.value === false){
-        this.total -= this.subTotal - (this.discount * this.subTotal) / 100;
+        this.total -= (this.discount * this.subTotal) / 100;
         this.discount -= this.selectionBugetList[index].discount;
         this.subTotal -= this.selectionBugetList[index].price;        
         this.selectionBuget.splice(index, 1);
@@ -162,7 +186,6 @@ export class RecordedSessionComponent implements OnInit {
   }
 
   public parseGetStarted(){
-    
     this._sessType;
     this._Syllabus;
     this._Class;
@@ -178,6 +201,29 @@ export class RecordedSessionComponent implements OnInit {
         this.activeLiveClass = true;
         this.getSessionType('Live');
       }
+    }
+  }
+
+  public renderPaymentForm(){
+    this.renderFinalPayForm = this.FormBuilder.group({
+      accessCode: new FormControl(),
+      orderid: new FormControl(),
+      currency: new FormControl(),
+      amount: new FormControl(),
+      redirect_url: new FormControl(),
+      cancel_url: new FormControl(),
+    });
+  }
+  public paymentHandler(){
+    if (this.total != null && this.advanceFilterForm.valid){
+      this.triggerURL = `${this.dataService.testURL}/transaction/transaction.do?command=initiateTransaction`;
+      let rawFormData = document.forms['renderFinalPayForm'];
+      let formData = `access_code=${rawFormData.access_code.value}&orderid=${rawFormData.orderid.value}&currency=${rawFormData.currency.value}&amount=${rawFormData.amount.value}&redirect_url=${rawFormData.redirect_url.value}&cancel_url=${rawFormData.cancel_url.value}`;
+      let stringForEncryption = JSON.stringify(formData); //Converting Json string for encryption
+      this.encRequest = window.btoa(stringForEncryption);
+      document.forms['renderFinalPayForm'].action = this.triggerURL;
+      document.forms['renderFinalPayForm'].method = 'POST';
+      document.forms['renderFinalPayForm'].submit();
     }
   }
 

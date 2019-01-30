@@ -10,7 +10,7 @@
                 </div>
             
             </div>
-            <form action="" [formGroup]="advanceFilterForm">
+            <form action="" [formGroup]="advanceFilterForm" [ngClass]="{'FormValidation': advanceFilterForm.invalid}">
                 <div class="row boxline">
                     <div class="col-md-6">
                         <select class="box" formControlName="SessionType">
@@ -83,46 +83,25 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 sec1">
-               
-                    <img src="/assets/template/universityimages2.jpg" class="mr-2 point-img" alt="Right program">
-             
-              
+                <img src="/assets/template/universityimages2.jpg" class="mr-2 point-img" alt="Right program">
             </div>
-            <div class="col-md-6" style="padding-top: 20px;padding-left: 100px;padding-right: 0px;">
+            <div class="col-md-6">
                 <h2 class="head">See Tute in action</h2>
                 <div class="section3">
-                      
-                    <i class="fa fa-check checkmark" style=" color: white;
-                    font-size: 20px;
-                    position: relative;
-                    bottom: -4.5px;
-                    left: 23px;"></i>
-                    <i class="fa fa-circle" style="color:orange;font-size: 30px;"></i>
-                    
-                    
+                    <img src="../../assets/icons/checkmark.png" alt="checkmarl" width="25" height="25"/>
                     <span style="padding-left: 9px;">45-minute to an hour live lessons delivered by qualified teachers on webcam using the Tute Learning Cloud platform.</span>
                     <hr style="margin-bottom:9px;margin-top:9px;margin-right: 0px;margin-left: 15px;">
                 </div>
                 <br>
                 <div class="section4">
-                        <i class="fa fa-check checkmark" style=" color: white;
-                        font-size: 20px;
-                        position: relative;
-                        bottom: -4.5px;
-                        left: 23px;"></i>
-                        <i class="fa fa-circle" style="color:orange;font-size: 30px;"></i>
-                        <span style="padding-left: 9px;">Up to 12 young people taught online in a group lesson.</span>
+                    <img src="../../assets/icons/checkmark.png" alt="checkmar2" width="25" height="25"/>
+                    <span style="padding-left: 9px;">Up to 12 young people taught online in a group lesson.</span>
                     <hr style="margin-bottom:9px;margin-top:9px;margin-right: 0px;margin-left: 15px;">
                 </div>
                 <br>
                 <div class="section4">
-                        <i class="fa fa-check checkmark" style=" color: white;
-                        font-size: 20px;
-                        position: relative;
-                        bottom: -4.5px;
-                        left: 23px;"></i>
-                        <i class="fa fa-circle" style="color:orange;font-size: 30px;"></i>
-                        <span style="padding-left: 9px;">Students communicate by voice (microphone on PC),live chat and using an interactive whiteboard.</span>
+                    <img src="../../assets/icons/checkmark.png" alt="checkmar3" width="25" height="25" />
+                    <span style="padding-left: 9px;">Students communicate by voice (microphone on PC),live chat and using an interactive whiteboard.</span>
                     <hr style="margin-bottom:9px;margin-top:9px;margin-right: 0px;margin-left: 15px;">
                 </div>
               
@@ -134,45 +113,45 @@
 </div>
 <!--mobile view why choose schoolingcouncil -->
 <div id="schoolingcouncilmbl">
-        <div class="bg-img-2-mbl">
-                <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 sec1">
-                                <div class="heading1">
-                                    <p>Why choose Schooling Council?</p>
-                                </div>
-                                <div class="content1">
-                                    <p>Empowering thousands of students in making the right career and college decision.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6" style="padding-left: 0px;padding-right: 30px;text-align: center;">
-                                <div class="section3">
-                                    <img src="/assets/template/profile-building.svg" alt="" style="height: 40px;">
-                                    <b>Profile</b> building
-                                    <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
-                                </div>
-                                <div class="section3">
-                                        <img src="/assets/template/mentor-assistance.svg" alt="" style="height: 40px;padding-left: 20px;">
-                                        <b>Mentor</b> assistance
-                                        <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
-                                    </div>
-                                <div class="section3">
-                                    <img src="/assets/template/quality-training.svg" alt="" style="height: 40px;">
-                                    <b>Quality</b> training
-                                    <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
-                                </div>
-                                <div class="section3">
-                                    <img src="/assets/template/loan-assistance.svg" alt="" style="height: 40px;">
-                                    <b>Loan</b> assistance
-                                </div>
-                            </div>
-                        </div>
+    <div class="bg-img-2-mbl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 sec1">
+                    <div class="heading1">
+                        <p>Why choose Schooling Council?</p>
                     </div>
-</div>
+                    <div class="content1">
+                        <p>Empowering thousands of students in making the right career and college decision.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" style="padding-left: 0px;padding-right: 30px;text-align: center;">
+                    <div class="section3">
+                        <img src="/assets/template/profile-building.svg" alt="" style="height: 40px;">
+                        <b>Profile</b> building
+                        <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
+                    </div>
+                    <div class="section3">
+                            <img src="/assets/template/mentor-assistance.svg" alt="" style="height: 40px;padding-left: 20px;">
+                            <b>Mentor</b> assistance
+                            <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
+                        </div>
+                    <div class="section3">
+                        <img src="/assets/template/quality-training.svg" alt="" style="height: 40px;">
+                        <b>Quality</b> training
+                        <hr align="center" width="45%" style="margin-top:5px !important;margin-bottom: 5px !important;position:relative;left: 17px;">
+                    </div>
+                    <div class="section3">
+                        <img src="/assets/template/loan-assistance.svg" alt="" style="height: 40px;">
+                        <b>Loan</b> assistance
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row" style="padding-bottom: 50px;">
         <div class="text-left col-md sec">
             <h2 class="font-weight-bold1" style="font-family:Product Sans;">Real teachers <br>real engagement.</h2>
             <p class="content">Tute is different. Our faculty of experienced<br>teachers deliver high quality lessons,via the<br>innovative Tute Learning Cloud platform.
@@ -180,7 +159,6 @@
             <br>
             <p class="content">Tute is different. Our faculty of experienced<br>teachers deliver high quality lessons,via the<br>innovative Tute Learning Cloud platform.
             </p>
-         
         </div>
         <div class="col-md-1">
         </div>

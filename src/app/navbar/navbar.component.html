@@ -12,10 +12,10 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/recordedSession">Recorded Sessions</a>
+                    <a class="nav-link multimenuBtn" (mouseover)="triggerMultiLevelMenu('RecordedSession')" routerLink="/recordedSession">Recorded Sessions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/liveSession">Live Sessions</a>
+                    <a class="nav-link" (mouseover)="triggerMultiLevelMenu('LiveSession')" routerLink="/liveSession">Live Sessions</a>
                 </li>
               
                 <li class="nav-item">
@@ -29,6 +29,35 @@
                 <button class="btn btn-outline-success" type="submit" (click)="open2(content2)">Sign up</button>
                 </li>
             </ul>
+
+            <div class="multiLevelNavBar" (mouseleave)="triggerOffMultiLevelMenu()" *ngIf="isActivatedMultiLevelMenu">
+                <div class="carrot1" *ngIf="LiveSessionMenu"></div>
+                <div class="carrot" *ngIf="RecorededSessionMenu"></div>
+                <div class="NavBar face1">
+                    <div class="navbarHeader">
+                        <span>Choose Board</span>
+                    </div>
+                    <div class="navbarBody">
+                        <li (click)="triggerOnLevels('Board', syllabus.value)" *ngFor="let syllabus of this.user.level.model.list" value="{{syllabus.value}}">{{syllabus.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                    </div>
+                </div>
+                <div class="NavBar face2" *ngIf="ClasslevelBanner">
+                    <div class="navbarHeader">
+                        <span>Choose Class</span>
+                    </div>
+                    <div class="navbarBody">
+                        <li (click)="triggerOnLevels('Classes', class.value)" *ngFor="let class of this.user.class.model.list" value="{{class.value}}">{{class.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                    </div>
+                </div>
+                <div class="NavBar face3" *ngIf="subjectLevelBanner">
+                    <div class="navbarHeader">
+                        <span>Choose Subject</span>
+                    </div>
+                    <div class="navbarBody" >
+                        <li (click)="triggerOnLevels('Subject', Subject.value+' '+Subject.text)" *ngFor="let Subject of this.user.subject.model.list" value="{{Subject.value}} {{Subject.text}}">{{Subject.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 </div>
@@ -91,7 +120,7 @@
                         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                                 <div class="require" *ngIf="f.username.errors.required">*Username is required</div>
                             </div>
-                        <input type="text" formControlName="password" class="form-control input-popup"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
+                        <input type="password" formControlName="password" class="form-control input-popup"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                 <div class="require" *ngIf="f.password.errors.required">*Password is required</div>
                             </div>
@@ -138,13 +167,13 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text"  formControlName="pwd" class="form-control input-rpopup" placeholder="Password"  [ngClass]="{ 'is-invalid': rsubmitted && r.pwd.errors }"/>
+                            <input type="password"  formControlName="pwd" class="form-control input-rpopup" placeholder="Password"  [ngClass]="{ 'is-invalid': rsubmitted && r.pwd.errors }"/>
                             <div *ngIf="rsubmitted && r.pwd.errors" class="invalid-feedback">
                             <div class="require1" *ngIf="r.pwd.errors.required">*Password is required</div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <input type="text"  formControlName="cpwd" class="form-control input-rpopup" placeholder="Confirm Password"  [ngClass]="{ 'is-invalid': rsubmitted && r.cpwd.errors }"/>
+                            <input type="password"  formControlName="cpwd" class="form-control input-rpopup" placeholder="Confirm Password"  [ngClass]="{ 'is-invalid': rsubmitted && r.cpwd.errors }"/>
                                 <div *ngIf="rsubmitted && r.cpwd.errors" class="invalid-feedback">
                                 <div class="require1" *ngIf="r.cpwd.errors.required">*Confirm Password is required</div>
                             </div>
@@ -158,7 +187,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text"  formControlName="phone" class="form-control input-rpopup" placeholder="Phone Number"  [ngClass]="{ 'is-invalid': rsubmitted && r.phone.errors }"/>
+                            <input type="text"  formControlName="phone" class="form-control input-rpopup" placeholder="Phone Number"  [ngClass]="{ 'is-invalid': rsubmitted && r.phone.errors }" maxlength="10"/>
                             <div *ngIf="rsubmitted && r.phone.errors" class="invalid-feedback">
                                 <div class="require1" *ngIf="r.phone.errors.required">*Phone Number is required</div>
                             </div>

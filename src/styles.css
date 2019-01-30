@@ -126,6 +126,7 @@ a, button{
 input:focus{
     outline: none !important;
 }
+
 select:focus{
     outline: none !important;
 }
