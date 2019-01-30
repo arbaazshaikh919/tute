@@ -38,7 +38,7 @@
                         <span>Choose Board</span>
                     </div>
                     <div class="navbarBody">
-                        <li (click)="triggerOnLevels('Board', syllabus.value)" *ngFor="let syllabus of this.user.level.model.list" value="{{syllabus.value}}">{{syllabus.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                        <li (mouseover)="triggerOnLevels('Board', syllabus.value)" *ngFor="let syllabus of this.user.level.model.list" value="{{syllabus.value}}">{{syllabus.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
                     </div>
                 </div>
                 <div class="NavBar face2" *ngIf="ClasslevelBanner">
@@ -46,7 +46,7 @@
                         <span>Choose Class</span>
                     </div>
                     <div class="navbarBody">
-                        <li (click)="triggerOnLevels('Classes', class.value)" *ngFor="let class of this.user.class.model.list" value="{{class.value}}">{{class.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                        <li (mouseover)="triggerOnLevels('Classes', class.value)" *ngFor="let class of this.user.class.model.list" value="{{class.value}}">{{class.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
                     </div>
                 </div>
                 <div class="NavBar face3" *ngIf="subjectLevelBanner">

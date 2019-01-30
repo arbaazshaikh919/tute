@@ -22,6 +22,8 @@ import { BookTrialComponent } from './book-trial/book-trial.component';
 import { LiveSessionComponent } from './live-session/live-session.component';
 import { recorededSessionModule } from './recorded-session/recorded-session.module';
 import { RecordedSessionComponent } from './recorded-session/recorded-session.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { PaymentFailureComponent } from './payment-failure/payment-failure.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { RecordedSessionComponent } from './recorded-session/recorded-session.co
     LiveSessionComponent,
     BookTrialComponent,
     RecordedSessionComponent,
+    PaymentSuccessComponent,
+    PaymentFailureComponent,
     // FooterpageComponent,
   ],
   imports: [
