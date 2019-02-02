@@ -84,7 +84,6 @@ export class ViewDetailsLiveSessionComponent implements OnInit {
     });
   }
 
-
   public checkSelectionList() {
     const selectedVideoIds = this.selectionListForm.value.List
       .map((v, i) => v ? this.videoLiveLessonBucket[i] : null)
@@ -92,5 +91,5 @@ export class ViewDetailsLiveSessionComponent implements OnInit {
     this.videoLiveLessonBucketList.splice(0, this.videoLiveLessonBucketList.length)
     this.videoLiveLessonBucketList.push(selectedVideoIds)
   }
-
+  
 }

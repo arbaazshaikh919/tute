@@ -45,14 +45,8 @@
     <div class="col-md-3">
       <p class="drop-heading">Type of Session</p>
     </div>
-    <div class="col-md-3">
-      <button class="drop-btn" [ngClass]="{'drop-btn1': activeLiveClass}" (click)="getSessionType('Live')">Live Session</button>
-    </div>
-    <div class="col-md-3">
-      <button class="drop-btn" [ngClass]="{'drop-btn1': activeRecorededClass}" (click)="getSessionType('Recorded')">Recorded Session</button>
-    </div>
-    <div class="col-md-3">
-      <button class="drop-btn" [ngClass]="{'drop-btn1': activeBothClass}" (click)="getSessionType('Both')">Both</button>
+    <div class="col-sm-9">
+      <button class="drop-btn" style="width: 93%;" [ngClass]="{'drop-btn1': activeRecorededClass}" (click)="getSessionType('Recorded')">Recorded Session</button>
     </div>
   </div>
 </div>
@@ -67,12 +61,12 @@
       <mat-accordion style="width:100%;" *ngIf="isAvailable" >
         <!-- <mat-expansion-panel class="accordion-style" *ngFor="let Results of this.SearchedRes"> -->
         <form [formGroup]="selectionListForm">
-          <mat-expansion-panel class="accordion-style" *ngFor="let Results of selectionList.controls; let i = index">
+          <mat-expansion-panel class="accordion-style" *ngFor="let Results of selectionListForm.controls.List.controls; let i = index">
             <mat-expansion-panel-header>
               <mat-panel-description>
                 <div class="check-box">
                   <label class="container">
-                    <input type="checkbox" class="checkbox" name="selectionChecker[]" (change)="checkSelectionList()" [formControl]="Results" id="selectionChecker[]">
+                    <input type="checkbox" class="checkbox" (change)="checkSelectionList()" [formControl]="Results">
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -80,13 +74,13 @@
               <mat-panel-description>
                 <div class="desc1">
                   <span>Lesson</span>
-                  <h3>{{ selectionBugetList[i].sessionname }}</h3>
+                  <h3>{{ selectionBucketList[i].sessionname }}</h3>
                 </div>
               </mat-panel-description>
               <mat-panel-description>
                 <div class="desc2">
                   <span>Duration</span>
-                  <h3>{{ selectionBugetList[i].duration }}hrs</h3>
+                  <h3>{{ selectionBucketList[i].duration }}hrs</h3>
                 </div>
               </mat-panel-description>
               <mat-panel-description>
@@ -96,7 +90,7 @@
               </mat-panel-description>
               <mat-panel-description>
                 <div class="desc4">
-                  <h3><img src="../../assets/icons/rupee-black.png" width="20" /> {{ selectionBugetList[i].price }}</h3>
+                  <h3><img src="../../assets/icons/rupee-black.png" width="20" /> {{ selectionBucketList[i].price }}</h3>
                 </div>
               </mat-panel-description>
             </mat-expansion-panel-header>

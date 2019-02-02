@@ -45,8 +45,8 @@ export class RecordedSessionComponent implements OnInit {
   public sampleVideoURL:string = null;
   public sesstionType:string = null;
   public SearchedRes:any;
-  public selectionBuget = [];
-  public selectionBugetList = [];
+  public selectionBucket = [];
+  public selectionBucketList = [];
   public _sessType: any;
   public _Syllabus: any;
   public _Class: any;
@@ -115,20 +115,9 @@ export class RecordedSessionComponent implements OnInit {
       this.activeRecorededClass = true;
       this.activeBothClass = false;
       this.activeLiveClass = false;
-      this.sesstionType = 'Recoreded';
-      this.sessionAPIURL = this.BaseURL + `syllabus=${this.fetchedSyllabusName}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.fetchedSubjectName}&lessonType=1`;
-    } else if (SessionType === 'Live') {
-      this.activeLiveClass = true;
-      this.activeBothClass = false;
-      this.activeRecorededClass = false;
-      this.sesstionType = 'Live';
-      this.sessionAPIURL = this.BaseURL + `syllabus=${this.fetchedSyllabusName}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.advanceFilterForm.controls.Subject.value}&lessonType=2`;
-    } else if (SessionType === 'Both') {
-      this.activeLiveClass = false;
-      this.activeRecorededClass = false;
-      this.sesstionType = 'Live & Recoreded';
-      this.activeBothClass = true;
-      this.sessionAPIURL = this.BaseURL + `syllabus=${this.fetchedSyllabusName}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.fetchedSubjectName}&lessonType=1`;
+      this.sesstionType = 'Recorded';
+      this.sessionAPIURL = "http://dev.tute.in/api/Lesson/GetLessionList?syllabus=CBSE&classes=6&subject=Maths&lessonType=1"
+      // this.sessionAPIURL = this.BaseURL + `syllabus=${this.fetchedSyllabusName}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.fetchedSubjectName}&lessonType=1`;
     }
     this.parseRequiredAPI(this.sessionAPIURL);
   }
@@ -136,13 +125,13 @@ export class RecordedSessionComponent implements OnInit {
   public parseRequiredAPI(_URL:string){
     this.dataService.getDataLiveSession(_URL).subscribe((res) => {
       this.SearchedRes = res.response.model.table;
-      this.selectionBugetList.splice(0, this.selectionBugetList.length);
+      this.selectionBucketList.splice(0, this.selectionBucketList.length);
       if(this.SearchedRes == ''){
         this.isAvailable = false;
       }else{
         this.isAvailable = true;
         this.SearchedRes.forEach((item) => {
-          this.selectionBugetList.push(item);
+          this.selectionBucketList.push(item);
           this.renderSelectionListForm();
         })
       }
@@ -151,45 +140,28 @@ export class RecordedSessionComponent implements OnInit {
 
   //Selection List Logic
   public renderSelectionListForm(){
+    const controls = this.selectionBucketList.map(cont => new FormControl(false));
     this.selectionListForm = this.FormBuilder.group({
-      List: this.addSelectionList(),
+      List: new FormArray(controls)
     });
-  }
-
-  public addSelectionList(){
-    const ListArr = this.selectionBugetList.map((element) => {
-      return this.FormBuilder.control(false);
-    });
-    return this.FormBuilder.array(ListArr);
-  }
-
-  get selectionList(){
-    return this.selectionListForm.get('List');
   }
 
   public checkSelectionList(){
-    this.selectionList.controls.forEach((items, index) => {
-      if (items.value === true) {
-        let bucketData = {
-          id: this.selectionBugetList[index].id,
-          discount: this.selectionBugetList[index].discount,
-          totalprice: this.selectionBugetList[index].price,
-          totalseats: this.selectionBugetList[index].totalseats
-        }
-        this.subTotal += bucketData.totalprice;
-        this.discount = bucketData.discount;
-        let totalDiscount = (this.discount * this.subTotal ) / 100;
-        this.total = this.subTotal - totalDiscount;
-        this.selectionBuget.push(bucketData);
-        this.showTotalBanner = true;
-      } else if (items.value === false){
-        this.total -= (this.discount * this.subTotal) / 100;
-        this.discount -= this.selectionBugetList[index].discount;
-        this.subTotal -= this.selectionBugetList[index].price;        
-        this.selectionBuget.splice(index, 1);
-      }
+    this.subTotal = 0;
+    this.discount = 0;
+    this.total = 0;
+    const selectedVideoIds = this.selectionListForm.value.List
+      .map((v, i) => v ? this.selectionBucketList[i] : null)
+      .filter(v => v !== null);
+    this.selectionBucket.splice(0, this.selectionBucket.length);
+    this.selectionBucket.push(selectedVideoIds)
+    selectedVideoIds.forEach(items => {
+      this.subTotal += items.price;
+      this.discount = items.discount;
     });
-    console.log(this.selectionBuget);
+    let totalDiscount = (this.discount * this.subTotal) / 100;
+    this.total = this.subTotal - totalDiscount;
+    this.showTotalBanner = true;
   }
 
   // Dialog Logic
@@ -203,17 +175,13 @@ export class RecordedSessionComponent implements OnInit {
   }
 
   public parseGetStarted(){
-    this._sessType;
-    this._Syllabus;
-    this._Class;
-    this._Subject;
     if (this._sessType != '' && this._Syllabus != '' && this._Class != '' && this._Subject){
       this.advanceFilterForm.controls.Syllabus.setValue(this._Syllabus);
       this.advanceFilterForm.controls.Subject.setValue(this._Subject);
       this.advanceFilterForm.controls.classes.setValue(this._Class);
       if (this._sessType == 1) {
         this.activeRecorededClass = true;
-        this.getSessionType('Recoreded');
+        this.getSessionType('Recorded');
       } else if (this._sessType == 2) {
         this.activeLiveClass = true;
         this.getSessionType('Live');
