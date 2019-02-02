@@ -52,6 +52,11 @@ export class RecordedSessionComponent implements OnInit {
   public _Class: any;
   public _Subject: any;
 
+  public fetchedSubjectName = null;
+  public fetchedSubjectId = null;
+  public fetchedSyllabusName = null;
+  public fetchedSyllabusId = null;
+
   public subTotal = null;
   public discount = null;
   public total = null;
@@ -87,31 +92,43 @@ export class RecordedSessionComponent implements OnInit {
 
   public renderAdvanceFilterForm(){
     this.advanceFilterForm = this.FormBuilder.group({
-      Syllabus: new FormControl('0', [Validators.required, Validators.minLength(2)]),
-      classes: new FormControl('01', [Validators.required, Validators.maxLength(1)]),
-      Subject: new FormControl('0', [Validators.required, Validators.minLength(2)]),
+      Syllabus: new FormControl('0', [Validators.required]),
+      classes: new FormControl('0', [Validators.required]),
+      Subject: new FormControl('0', [Validators.required]),
     });
   }
 
+  public getSudjectDetails() {
+    this.fetchedSubjectId = this.advanceFilterForm.controls.Subject.value.split(" ")[0];
+    this.fetchedSubjectName = this.advanceFilterForm.controls.Subject.value.split(" ")[1];
+  }
+
+  public getSyllabusDetails() {
+    this.fetchedSyllabusId = this.advanceFilterForm.controls.Syllabus.value.split(" ")[0];
+    this.fetchedSyllabusName = this.advanceFilterForm.controls.Syllabus.value.split(" ")[1];
+  }
+
   public getSessionType(SessionType:string){
+    this.getSudjectDetails();
+    this.getSyllabusDetails();
     if (SessionType === 'Recorded') {
       this.activeRecorededClass = true;
       this.activeBothClass = false;
       this.activeLiveClass = false;
       this.sesstionType = 'Recoreded';
-      this.sessionAPIURL = this.BaseURL + `syllabus=${this.advanceFilterForm.controls.Syllabus.value}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.advanceFilterForm.controls.Subject.value}&lessonType=1`;
+      this.sessionAPIURL = this.BaseURL + `syllabus=${this.fetchedSyllabusName}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.fetchedSubjectName}&lessonType=1`;
     } else if (SessionType === 'Live') {
       this.activeLiveClass = true;
       this.activeBothClass = false;
       this.activeRecorededClass = false;
       this.sesstionType = 'Live';
-      this.sessionAPIURL = this.BaseURL + `syllabus=${this.advanceFilterForm.controls.Syllabus.value}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.advanceFilterForm.controls.Subject.value}&lessonType=2`;
+      this.sessionAPIURL = this.BaseURL + `syllabus=${this.fetchedSyllabusName}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.advanceFilterForm.controls.Subject.value}&lessonType=2`;
     } else if (SessionType === 'Both') {
       this.activeLiveClass = false;
       this.activeRecorededClass = false;
       this.sesstionType = 'Live & Recoreded';
       this.activeBothClass = true;
-      this.sessionAPIURL = this.BaseURL + `syllabus=${this.advanceFilterForm.controls.Syllabus.value}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.advanceFilterForm.controls.Subject.value}&lessonType=3`;
+      this.sessionAPIURL = this.BaseURL + `syllabus=${this.fetchedSyllabusName}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.fetchedSubjectName}&lessonType=1`;
     }
     this.parseRequiredAPI(this.sessionAPIURL);
   }

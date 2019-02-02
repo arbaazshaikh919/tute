@@ -10,9 +10,11 @@ import 'rxjs/Rx';
 })
 export class UserService {
   public apiUrl = `http://dev.tute.in/`;
-  public baseURL=`https://learn.tute.com/`;
-  public baseAltURL=`https://learn2.tute.com/`;
-  user: any;
+  public baseAltURL=`http://dev.tute.in/`;
+  public user: any;
+
+  public liveSessionData = [];
+
   subject = {
     'code':0,
     'message':'',
@@ -78,9 +80,9 @@ export class UserService {
     ]
   };
 
-  public lessionFinderPayload = {
-    "subjectIds": "19", "levelIds": "1", "types": "GROUP", "rating": "", "yearIds": "15", "availability": "", "PublicLevel": "", "skip": 0, "take": 9
-  }
+  // public lessionFinderPayload = {
+  //   "subjectIds": "19", "levelIds": "1", "types": "GROUP", "rating": "", "yearIds": "15", "availability": "", "PublicLevel": "", "skip": 0, "take": 9
+  // }
 
   public profile:any;
   public rprofile:any;
@@ -97,7 +99,7 @@ export class UserService {
   public productURL = '	https://secure.ccavenue.com';
 
   public getSubject(): Observable<any>{
-    return this.http.get(this.baseURL + 'api/common/GetSubjectNames?')
+    return this.http.get(this.apiUrl + 'api/common/GetSubjectNames?')
     .map(res=>res.json());
 
   }
@@ -150,7 +152,7 @@ export class UserService {
     return this.http.post(this.baseAltURL + 'api/LessonFinder', payLoad, ParseHeaders).map(res => res.json());
   }
 
-  public renderLesssonFinderPayload(Syllabus = '', Class = '', Subject = ''){
+  public renderLesssonFinderPayload(Syllabus, Class, Subject){
     let payLoadData = {
       "subjectIds": `${Subject}`, "levelIds": `${Syllabus}`, "types": "GROUP", "rating": "", "yearIds": `${Class}`, "availability": "", "PublicLevel": "", "skip": 0, "take": 9
     }

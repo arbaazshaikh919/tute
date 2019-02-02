@@ -1,0 +1,264 @@
+.top-header{
+    width:100%;
+}
+
+.top-header .header-deatails{
+    width: 100%;
+    height: 111px;
+    font-weight: bolder;
+}
+
+.top-header .header-deatails .header-path{
+    height: 50px;
+    font-size: 16px;
+    margin-top: 22px;
+    font-weight: 300;
+}
+
+.top-header .header-deatails .header-path span{
+    color: rgb(136, 136, 136);
+}
+
+.top-header .header-deatails .header-title{
+    color: #3E3E3E;
+    font-size: 24px;
+    margin-top: -9px;
+}
+
+.top-header .top-header-details .top-header-details-banner{
+    width: 100%;
+    height: 45px;
+    background-color: #F8F8F8;
+}
+
+.top-header .top-header-details .top-header-details-banner .top-tabbullar-titles{
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.top-header .top-header-details .top-header-details-banner .top-tabbullar-titles li{
+    list-style-type: none;
+    display: inline;
+    padding: 0 20px 8px 20px;
+    position: relative;
+    top: 17px;
+    cursor: pointer;
+    -webkit-transition: .3s ease;
+   -ms-transition: .3s ease;
+   -moz-transition: .3s ease;
+   -o-transition: .3s ease;
+   transition: .3s ease;
+}
+
+.top-header .top-header-details .top-header-details-banner .top-tabbullar-titles li:hover{
+    font-weight: bold;
+    border-bottom: 3px solid rgb(226, 226, 20);
+    -webkit-transition: .3s ease;
+   -ms-transition: .3s ease;
+   -moz-transition: .3s ease;
+   -o-transition: .3s ease;
+   transition: .3s ease;
+}
+
+.active{
+    border-bottom: 3px solid rgb(226, 226, 20);
+}
+
+.top-header .top-header-details .tabbullar-view-details{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: -30px;
+}
+
+.top-header .top-header-details .tabbullar-view-details .tab-desc{
+    /* padding: 40px 30px 10px 30px; */
+}
+
+.top-header .top-header-details .tabbullar-view-details .tab-desc > .tab-desc-header h4{
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+
+.top-header .top-header-details .tabbullar-view-details .tab-desc ul li{
+    list-style-type: none;
+    padding: 5px 0;
+}
+
+.top-header .top-header-details .tabbullar-view-details .tab-desc ul li img{
+    width: 17px;
+    margin-right: 7px;
+    margin-top: -2px;
+}
+
+.body-details-container .body-header{
+    margin-bottom: 20px;
+}
+
+.body-details-container .body-header span{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.accordion-style-faq{
+    background-color: #F8F8F8;
+    width: 100%;
+    min-height: 75px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    margin-left: 38px;
+}
+
+.accordion-style-faq .header-desc{
+    padding-top: 30px;
+}
+
+.accordion-style{
+    background-color: #fff;
+    width: 100%;
+    min-height: 65px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.accordion-style .desc{
+    padding-top: 18px;
+    width: 160px;
+    float: left;
+    margin-top: -5px;
+}
+.accordion-style .desc span{
+    color: rgb(129, 129, 129);
+
+}
+.accordion-style .desc h3{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.accordion-style .check-box{
+    padding: 24px 0 0 16px;
+}
+
+.accordion-style .enroll-btn{
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    float: right;
+}
+
+.accordion-style .enroll-btn button{
+    width: 130px;
+    height: 40px;
+    background-color: #FBA922;
+    border-radius: 8px;
+    border: none;
+}
+
+.accordion-style .enroll-btn button span{
+    color: #ffffff !important;
+    padding-left: 3px;
+}
+
+.total-banner{
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+}
+
+.total-banner .total-banner-desc{
+    margin-top:-15px;
+}
+
+.calcs{
+    text-align: center;
+    padding-top: 30px;
+}
+.calcs span{
+    font-size:22px;
+}
+.calcs span .amount{
+    font-size:28px;
+}
+.calcs span img{
+    margin-top: -8px;
+}
+.calcs button{
+    width: 180px;
+    height: 50px;
+    background-color: #FBA922;
+    border-radius: 8px;
+    color:#fff;
+    border: none;
+}
+
+.calcs button img{
+    margin-top: -4px;
+}
+
+.check-box > .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container .checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover .checkbox ~ .checkmark {
+  background-color: #E2F7E8;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container .checkbox:checked ~ .checkmark {
+  background-color: #E2F7E8;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container .checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 9px;
+  height: 17px;
+  border: solid #5DD586;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

@@ -1,0 +1,320 @@
+<app-navbar></app-navbar>
+<div class="top-header">
+  <div class="container">
+    <div class="header-deatails">
+      <div class="header-path">
+        <span>{{syllabus}} / Class {{class}} / {{subject}} / {{lessonName}} / {{sessionType}} Session / Details</span>
+      </div>
+
+      <div class="header-title">
+        {{lessonName}}
+      </div>
+    </div>
+  </div>
+
+  <div class="top-header-details">
+    <div class="top-header-details-banner">
+      <div class="container">
+        <div class="top-tabbullar-titles">
+          <li [ngClass]="{'active': isActivateCurriculumTab}" (click)="renderTabs('Curriculum')">Curriculum</li>
+          <li [ngClass]="{'active': isActivateBatchesTab}" (click)="renderTabs('Batches')">Batches</li>
+          <li [ngClass]="{'active': isActivateFAQTab}" (click)="renderTabs('FAQ')">FAQ</li>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="tabbullar-view-details">
+        <div class="tab-desc" *ngIf="isActivateCurriculumTab">
+          <div class="tab-desc-header">
+            <h4>What will you learn</h4>
+          </div>
+          <div class="tab-desc-body">
+            <ul>
+              <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" width="17" /> Linear Equations with variables on
+                both sides</li>
+              <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Describing steps when solving</li>
+              <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Linear Equatuions with parentheses</li>
+              <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Two-step equation word-problems</li>
+              <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Analyzing the number of solutions to linear
+                equations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab-desc" *ngIf="isActivateBatchesTab">
+          <div class="tab-desc-header">
+            <h4>We Serve below batches</h4>
+          </div>
+
+          <div class="tab-desc-body"></div>
+        </div>
+
+        <div class="tab-desc" *ngIf="isActivateFAQTab">
+          <div class="tab-desc-header">
+            <h4>Frequently Asked Questions</h4>
+          </div>
+          
+          <div class="tab-desc-body">
+            <mat-expansion-panel class="accordion-style-faq">
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="header-desc">
+                    <h5>How will live session work ?</h5>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            
+              <div class="tab-desc">
+                <div class="tab-desc-header">
+                  <h4>What will you learn</h4>
+                </div>
+                <ul>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" width="17" /> Linear Equations with variables on
+                    both sides</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Describing steps when solving</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Linear Equatuions with parentheses</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Two-step equation word-problems</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Analyzing the number of solutions to linear
+                    equations</li>
+                </ul>
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="accordion-style-faq">
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="header-desc">
+                    <h5>Will the same teacher complete the entire lesson ?</h5>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            
+              <div class="tab-desc">
+                <div class="tab-desc-header">
+                  <h4>What will you learn</h4>
+                </div>
+                <ul>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" width="17" /> Linear Equations with variables on
+                    both sides</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Describing steps when solving</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Linear Equatuions with parentheses</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Two-step equation word-problems</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Analyzing the number of solutions to linear
+                    equations</li>
+                </ul>
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="accordion-style-faq">
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="header-desc">
+                    <h5>Will high-level problems be solved ?</h5>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            
+              <div class="tab-desc">
+                <div class="tab-desc-header">
+                  <h4>What will you learn</h4>
+                </div>
+                <ul>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" width="17" /> Linear Equations with variables on
+                    both sides</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Describing steps when solving</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Linear Equatuions with parentheses</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Two-step equation word-problems</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Analyzing the number of solutions to linear
+                    equations</li>
+                </ul>
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="accordion-style-faq">
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="header-desc">
+                    <h5>Will the lesson be aligned to school curriculum ?</h5>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            
+              <div class="tab-desc">
+                <div class="tab-desc-header">
+                  <h4>What will you learn</h4>
+                </div>
+                <ul>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" width="17" /> Linear Equations with variables on
+                    both sides</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Describing steps when solving</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Linear Equatuions with parentheses</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Two-step equation word-problems</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Analyzing the number of solutions to linear
+                    equations</li>
+                </ul>
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="accordion-style-faq">
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="header-desc">
+                    <h5>Will high-level problems be solved ?</h5>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            
+              <div class="tab-desc">
+                <div class="tab-desc-header">
+                  <h4>What will you learn</h4>
+                </div>
+                <ul>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" width="17" /> Linear Equations with variables on
+                    both sides</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Describing steps when solving</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Linear Equatuions with parentheses</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Two-step equation word-problems</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Analyzing the number of solutions to linear
+                    equations</li>
+                </ul>
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="accordion-style-faq">
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="header-desc">
+                    <h5>Can i ask doubts in the session ?</h5>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            
+              <div class="tab-desc">
+                <div class="tab-desc-header">
+                  <h4>What will you learn</h4>
+                </div>
+                <ul>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" width="17" /> Linear Equations with variables on
+                    both sides</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Describing steps when solving</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Linear Equatuions with parentheses</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Two-step equation word-problems</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Analyzing the number of solutions to linear
+                    equations</li>
+                </ul>
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="accordion-style-faq">
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="header-desc">
+                    <h5>Can we stop the lesson between and ask for refund ?</h5>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            
+              <div class="tab-desc">
+                <div class="tab-desc-header">
+                  <h4>What will you learn</h4>
+                </div>
+                <ul>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" width="17" /> Linear Equations with variables on
+                    both sides</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Describing steps when solving</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Linear Equatuions with parentheses</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Two-step equation word-problems</li>
+                  <li><img src="../../assets/icons/checkmark.png" alt="checkmarl" /> Analyzing the number of solutions to linear
+                    equations</li>
+                </ul>
+              </div>
+            </mat-expansion-panel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ls-content">
+    <div class="container book">
+      <div class="row ls-content-row">
+        <div class="col-md-12">
+          <div class="body-details-container">
+            <div class="container">
+              <div class="body-header">
+                <span>Choose Batch</span>
+              </div>
+              <form [formGroup]="selectionListForm">
+                <div class="batch-details-trip accordion-style" *ngFor="let Lessons of selectionListForm.controls.List.controls; let i = index">
+                  <div class="description">
+                    <div class="check-box desc">
+                      <label class="container">
+                        <input type="checkbox" [formControl]="Lessons" class="checkbox" name="selectionChecker[]" id="selectionChecker[]" (change)="checkSelectionList()">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+
+                    <div class="desc">
+                      <span>Upcoming Session</span>
+                      <h3>{{videoLiveLessonBucket[i].date}}</h3>
+                    </div>
+
+                    <div class="desc">
+                      <span>Time</span>
+                      <h3>4 pm - 5 pm</h3>
+                    </div>
+
+                    <div class="desc">
+                      <span>Days</span>
+                      <h3>Tue, Thus</h3>
+                    </div>
+
+                    <div class="desc">
+                      <span>Available Seats</span>
+                      <h3>{{videoLiveLessonBucket[i].placesAvailable}}</h3>
+                    </div>
+
+                    <div class="desc enroll-btn">
+                      <button type="submit"> <span>Enroll Now <img src="../../assets/icons/left-arrow.png" width="30" /> </span></button>
+                    </div>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="total-banner">
+          <div class="container">
+            <div class="total-banner-desc">
+              <form method="POST" name="renderFinalPayForm" id="renderFinalPayForm" action="" (submit)="paymentHandler()">
+                <input type="hidden" id="encRequest" name="encRequest" value="  ">
+                <input type="hidden" name="working_key" id="working_key" value=''>
+                <input type="hidden" name="access_code" id="access_code" value=''>
+                <input type="hidden" name="orderid" id="orderid" value=''>
+                <input type="hidden" name="currency" id="currency" value='INR'>
+                <input type="hidden" name="amount" id="amount" value=''>
+                <input type="hidden" name="redirect_url" id="redirect_url" value='http://localhost4200/paymentSuccess'>
+                <input type="hidden" name="cancel_url" id="cancel_url" value='http://localhost4200/paymentFailure'>
+                <div class="row">
+                  <div class="col-sm-4 calcs">
+                    <span>Sub-total <img src="../../assets/icons/rupee-black.png" width="20" /> <span class="amount">334</span></span>
+                  </div>
+                  <div class="col-sm-4 calcs">
+                    <span>Discount <img src="../../assets/icons/rupee-black.png" width="20" /> <span class="amount">5%</span></span>
+                  </div>
+                  <div class="col-sm-4 calcs">
+                    <button type="submit">Total <img src="../../assets/icons/rupee.png" width="20" /> <span class="amount"> 1400 <img src="../../assets/icons/left-arrow.png" width="30" /> </span></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>

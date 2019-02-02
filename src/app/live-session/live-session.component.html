@@ -1,13 +1,13 @@
 
 <app-navbar ></app-navbar>
 <div class="container drop-main">
-  <div class="row">
+  <div class="row responsive-style">
     <div class="col-md-3"></div>
     <div class="col-md-3">
-      <p class="drop-title">Syllabus</p>
+      <p class="drop-title">Class</p>
     </div>
     <div class="col-md-3">
-      <p class="drop-title">Class</p>
+        <p class="drop-title">Syllabus</p>
     </div>
     <div class="col-md-3">
       <p class="drop-title">Subject</p>
@@ -15,7 +15,7 @@
   </div>
 
   <form action="" method="POST" [formGroup]="advanceFilterForm" >
-    <div class="row">
+    <div class="row responsive-center-adjustment">
       <div class="col-md-3">
         <p class="drop-heading">Refine search</p>
       </div>
@@ -26,9 +26,9 @@
         </select>
       </div>
       <div class="col-md-3">
-        <select class="ls-dropdown" formControlName="Syllabus">
+        <select class="ls-dropdown" formControlName="Syllabus" (change)="getSyllabusDetails()">
           <option value="0">Select Syllabus</option>
-          <option *ngFor="let syllabus of this.dataService.level.model.list" value="{{syllabus.value}}">{{syllabus.text}}</option>
+          <option *ngFor="let syllabus of this.dataService.level.model.list" value="{{syllabus.value}} {{syllabus.text}}">{{syllabus.text}}</option>
         </select>
       </div>
       <div class="col-md-3">
@@ -42,7 +42,7 @@
   </form>
 
 
-  <div class="row drop-second">
+  <div class="row drop-second responsive-center-adjustment">
     <div class="col-md-3">
       <p class="drop-heading">Type of Session</p>
     </div>
@@ -68,23 +68,24 @@
     </div>
     
       <div class="row ls-card" *ngIf="isLiveSession">
-        <div class="col-sm-4 " *ngFor="let videoList of liveSessionData">
-            <h4 style="margin-top:14px;">Live Session</h4>
+        <div class="col-sm-4 " *ngFor="let videoList of this.dataService.liveSessionData">
+          <h4 style="margin-top:14px;">Live Session</h4>
           <div class="card">
             <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
             <div class="card-block">
               <h4 class="card-title">{{ videoList.title }}</h4>
               <p class="card-text">Upcoming Sessions</p>
               <h4 class="card-stitle">{{ videoList.date }}</h4>
-              <p class="card-text">Duration</p>
-              <h4 class="card-stitle">{{ videoList.lessonLength }} hrs</h4>
+              <p class="card-text">Subject</p>
+              <h4 class="card-stitle">{{ videoList.subject__Name }}</h4>
             </div>
             <div class="card-footer">
-              <button class="card-btn" >View details</button>
+              <button class="card-btn" (click)="renderViewDetails(videoList.id, videoList.title)">View details</button>
             </div>
           </div>
         </div>
       </div>
+      
       <div class="row ls-card">
         <div class="col-sm-4" *ngFor="let videoList of SearchedRes">
             <h4 style="margin-top:14px;">Recorded Session</h4>

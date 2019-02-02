@@ -1,103 +1,68 @@
-<div id="app" class="container n1"  *ngIf="this.user.hideElement" >
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand" [routerLink]="['/home']">
-            <img src="/assets/tute-logo.png" width="100" alt="logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
- aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="navbarNavDropdown" class="navbar-collapse collapse">
-            <ul class="navbar-nav mr-auto">    
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link multimenuBtn" (mouseover)="triggerMultiLevelMenu('RecordedSession')" routerLink="/recordedSession">Recorded Sessions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" (mouseover)="triggerMultiLevelMenu('LiveSession')" routerLink="/liveSession">Live Sessions</a>
-                </li>
-              
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/bookTrail">Book a Trial</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="#">Contact us</a>
-                </li>
-    
-                <li class="nav-item">
-                <button class="btn btn-outline-success" type="submit" (click)="open2(content2)">Sign up</button>
-                </li>
-            </ul>
+<div class="main-navbar-container applyNavBackground" [ngStyle]="{'background-color': AlterStyle === true ? '#3069bd' : transparent}">
+    <div id="app" class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" [routerLink]="['/home']">
+                <img src="/assets/tute-logo.png" width="100" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarNavDropdown" class="navbar-collapse collapse">
+                <ul class="navbar-nav mr-auto">    
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link multimenuBtn" (mouseover)="triggerMultiLevelMenu('RecordedSession')" routerLink="/recordedSession">Recorded Sessions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (mouseover)="triggerMultiLevelMenu('LiveSession')" routerLink="/liveSession">Live Sessions</a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/bookTrail">Book a Trial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="#">Contact us</a>
+                    </li>
+        
+                    <li class="nav-item">
+                    <button class="btn btn-outline-success" type="submit" (click)="open2(content2)">Sign up</button>
+                    </li>
+                </ul>
 
-            <div class="multiLevelNavBar" (mouseleave)="triggerOffMultiLevelMenu()" *ngIf="isActivatedMultiLevelMenu">
-                <div class="carrot1" *ngIf="LiveSessionMenu"></div>
-                <div class="carrot" *ngIf="RecorededSessionMenu"></div>
-                <div class="NavBar face1">
-                    <div class="navbarHeader">
-                        <span>Choose Board</span>
+                <div class="multiLevelNavBar" (mouseleave)="triggerOffMultiLevelMenu()" *ngIf="isActivatedMultiLevelMenu">
+                    <div class="carrot1" *ngIf="LiveSessionMenu"></div>
+                    <div class="carrot" *ngIf="RecorededSessionMenu"></div>
+                    <div class="NavBar face1">
+                        <div class="navbarHeader">
+                            <span>Choose Board</span>
+                        </div>
+                        <div class="navbarBody">
+                            <li (mouseover)="triggerOnLevels('Board', syllabus.value+' '+syllabus.text)" *ngFor="let syllabus of this.user.level.model.list" value="{{syllabus.value}}">{{syllabus.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                        </div>
                     </div>
-                    <div class="navbarBody">
-                        <li (mouseover)="triggerOnLevels('Board', syllabus.value)" *ngFor="let syllabus of this.user.level.model.list" value="{{syllabus.value}}">{{syllabus.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                    <div class="NavBar face2" *ngIf="ClasslevelBanner">
+                        <div class="navbarHeader">
+                            <span>Choose Class</span>
+                        </div>
+                        <div class="navbarBody">
+                            <li (mouseover)="triggerOnLevels('Classes', class.value)" *ngFor="let class of this.user.class.model.list" value="{{class.value}}">{{class.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                        </div>
                     </div>
-                </div>
-                <div class="NavBar face2" *ngIf="ClasslevelBanner">
-                    <div class="navbarHeader">
-                        <span>Choose Class</span>
-                    </div>
-                    <div class="navbarBody">
-                        <li (mouseover)="triggerOnLevels('Classes', class.value)" *ngFor="let class of this.user.class.model.list" value="{{class.value}}">{{class.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
-                    </div>
-                </div>
-                <div class="NavBar face3" *ngIf="subjectLevelBanner">
-                    <div class="navbarHeader">
-                        <span>Choose Subject</span>
-                    </div>
-                    <div class="navbarBody" >
-                        <li (click)="triggerOnLevels('Subject', Subject.value+' '+Subject.text)" *ngFor="let Subject of this.user.subject.model.list" value="{{Subject.value}} {{Subject.text}}">{{Subject.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                    <div class="NavBar face3" *ngIf="subjectLevelBanner">
+                        <div class="navbarHeader">
+                            <span>Choose Subject</span>
+                        </div>
+                        <div class="navbarBody" >
+                            <li (click)="triggerOnLevels('Subject', Subject.value+' '+Subject.text)" *ngFor="let Subject of this.user.subject.model.list" value="{{Subject.value}} {{Subject.text}}">{{Subject.text}} <span> <img src="../../assets/icons/left-arrow-gray.png" width="30" /> </span></li>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </div>
 
-
-<!--Other pages header-->
-<div id="app" class="container n2"  *ngIf="this.user.hideElement0">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand" [routerLink]="['/home']">
-            <img src="/assets/tute-logo.png" width="100" alt="logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
- aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="navbarNavDropdown" class="navbar-collapse collapse">
-            <ul class="navbar-nav mr-auto">    
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/recordedSession">Recorded Sessions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/liveSession">Live Sessions</a>
-                </li>
-              
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/bookTrail">Book a Trial</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="#">Contact us</a>
-                </li>
-    
-                <li class="nav-item">
-                <button class="btn btn-outline-success" type="submit" (click)="open2(content2)">Sign up</button>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
 
 <!--Other pages header-->
 <ng-template #content let-modal>

@@ -60,10 +60,13 @@ export class NavbarComponent implements OnInit {
     'userName': 'amar.singh@tute.in',
     'year': '8'
   }
+  public ActivatedRouteParam: any;
+  public AlterStyle: boolean;
 
 
-  constructor(private formBuilder: FormBuilder,private modalService: NgbModal,private _router:Router,private user: UserService) { 
-    console.log(this.user.hideElement,this.user.hideElement0)
+  constructor(private formBuilder: FormBuilder,private modalService: NgbModal,private _router:Router, private router:ActivatedRoute,private user: UserService) { 
+    // console.log(this.user.hideElement,this.user.hideElement0)
+    this.renderNavbarStyle();
   }
 
   ngOnInit() {
@@ -266,10 +269,16 @@ export class NavbarComponent implements OnInit {
           '_suB': this.subjectMenuValue[0],
         }
       });
+      this.isActivatedMultiLevelMenu = false;
     }
     // console.log(filteredMenuValues);
   }
 
-  
+  public renderNavbarStyle(){
+    this.ActivatedRouteParam = this._router.url;
+    if (this.ActivatedRouteParam !== '/home') {
+      this.AlterStyle = true;
+    }
+  }
 
 }

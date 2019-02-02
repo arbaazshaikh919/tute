@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormArray,FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -21,10 +21,14 @@ export class LiveSessionComponent implements OnInit {
 
   public sessionAPIURL: string = null;
   public SearchedRes: any;
-  public liveSessionData: any;
   public videosBucketList = [];
+  public getPayLoad = null;
+
+
   public fetchedSubjectName = null;
   public fetchedSubjectId = null;
+  public fetchedSyllabusName = null;
+  public fetchedSyllabusId = null;
 
   public _sessType: any;
   public _Syllabus: any;
@@ -40,7 +44,7 @@ export class LiveSessionComponent implements OnInit {
   Subject = null;
   advanceFilterForm: FormGroup;
 
-  constructor(private dataService: UserService, private FormBuilder: FormBuilder, private route: ActivatedRoute) {
+  constructor(private dataService: UserService, private FormBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.renderAdvanceFilterForm();
     // console.log(this.dataService.renderLesssonFinderPayload('1', '15', '19').subjectIds)
   }
@@ -68,8 +72,13 @@ export class LiveSessionComponent implements OnInit {
     this.fetchedSubjectName = this.advanceFilterForm.controls.Subject.value.split(" ")[1];
   }
 
+  public getSyllabusDetails() {
+    this.fetchedSyllabusId = this.advanceFilterForm.controls.Syllabus.value.split(" ")[0];
+    this.fetchedSyllabusName = this.advanceFilterForm.controls.Syllabus.value.split(" ")[1];
+  }
+
   public getSessionType(SessionType: string) {
-    if (this.advanceFilterForm.controls.Syllabus.value != '0' && this.advanceFilterForm.controls.classes.value != '0' && this.advanceFilterForm.controls.Subject.value){
+    if (this.advanceFilterForm.controls.Syllabus.value != '0' && this.advanceFilterForm.controls.classes.value != '0' && this.advanceFilterForm.controls.Subject.value) {
       if (SessionType === 'Recorded') {
         this.activeRecorededClass = true;
         this.activeBothClass = false;
@@ -83,7 +92,7 @@ export class LiveSessionComponent implements OnInit {
         this.activeBothClass = false;
         this.activeRecorededClass = false;
         this.sesstionType = 'Live';
-        this.dataService.renderLesssonFinderPayload(this.advanceFilterForm.controls.Syllabus.value, this.advanceFilterForm.controls.classes.value, this.fetchedSubjectId);
+        this.getPayLoad = this.dataService.renderLesssonFinderPayload(this.fetchedSyllabusId, this.advanceFilterForm.controls.classes.value, this.fetchedSubjectId);
         this.parseLiveSessionAPI();
       } else if (SessionType === 'Both') {
         this.activeLiveClass = false;
@@ -94,25 +103,23 @@ export class LiveSessionComponent implements OnInit {
         this.isLiveSession = true;
         this.parseRequiredAPI(this.sessionAPIURL);
       }
-    }else{
+    } else {
       alert('Please fill all required fields');
       this.advanceFilterForm.getError;
     }
   }
 
-  public parseLiveSessionAPI(){
-    const searchFilterParams = Object.keys(this.dataService.lessionFinderPayload).map((key) => {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(this.dataService.lessionFinderPayload[key]);
+  public parseLiveSessionAPI() {
+    const searchFilterParams = Object.keys(this.getPayLoad).map((key) => {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(this.getPayLoad[key]);
     }).join('&');
     this.dataService.renderLessonFinder(searchFilterParams).subscribe((data) => {
+      this.dataService.liveSessionData.splice(0, this.dataService.liveSessionData.length);
       data.response.model.forEach(items => {
         this.dataService.renderLessons(items.courseId).subscribe((data) => {
-          console.log(data.response.model.rercurrences); 
-          data.response.model.rercurrences.forEach(videoItems => {
-            console.log(videoItems.lessons);
-            this.liveSessionData = videoItems.lessons;
-            this.isLiveSession = true;
-          });
+          this.dataService.liveSessionData.push(data.response.model);
+          // console.log(this.dataService.liveSessionData);
+          this.isLiveSession = true;
         });
       });
     });
@@ -121,7 +128,6 @@ export class LiveSessionComponent implements OnInit {
   public parseRequiredAPI(_URL: string) {
     this.dataService.getDataLiveSession(_URL).subscribe((res) => {
       this.SearchedRes = res.response.model.table;
-      // this.videosBucketList.push(res.response.model.table);
     });
   }
 
@@ -131,6 +137,7 @@ export class LiveSessionComponent implements OnInit {
       this.advanceFilterForm.controls.Subject.setValue(this._Subject);
       this.advanceFilterForm.controls.classes.setValue(this._Class);
       this.getSudjectDetails();
+      this.getSyllabusDetails();
       if (this._sessType == 1) {
         this.activeRecorededClass = true;
         this.getSessionType('Recoreded');
@@ -139,6 +146,19 @@ export class LiveSessionComponent implements OnInit {
         this.getSessionType('Live');
       }
     }
+  }
+
+  public renderViewDetails(detailsId, lessonName) {
+    this.router.navigate([`/viewDetails`], {
+      queryParams: {
+        '_sessTy': this.sesstionType,
+        '_sylB': this.fetchedSyllabusName,
+        '_cls': this.advanceFilterForm.controls.classes.value,
+        '_suB': this.fetchedSubjectName,
+        '_detId': detailsId,
+        '_leSsN': lessonName,
+      }
+    });
   }
 
 }

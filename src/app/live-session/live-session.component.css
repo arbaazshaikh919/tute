@@ -151,26 +151,73 @@ margin-right:auto;
     border-radius: 10px;
     border:1px solid lightgray;
     padding: 10px;
+    width: 423px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    text-align: center;
 
 }
-.book-main
-{
+.book-main{
     margin-bottom: 20px;
-    margin-left: 200px;
+    /* margin-left: 200px; */
 }
-.book-btn
-{
-    width: 59%;
+.book-btn{
+    width: 100%;
     padding: 15px;
     background-color: #3dce3dc4;
     border: 0;
     color: white;
     border-radius: 10px;
-    margin-left: 230px;
+    margin-left: 0;
     font-size: 20px;
     font-weight: bold;
 }
 .book{
     padding-bottom: 50px;
     padding-top: 20px;
+}
+
+@media (max-width:768px){
+    .responsive-style{
+        display: none !important;
+    }
+
+    .responsive-center-adjustment{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .responsive-center-adjustment select{
+        margin-bottom: 14px;
+    }
+
+    .responsive-center-adjustment button{
+        margin-bottom: 14px;
+    }
+
+    .book-main{
+        width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+
+    .book-main input{
+        width: 70%;
+        margin-bottom: 14px;
+    }
+    .book-btn{
+        margin: 0;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
 }

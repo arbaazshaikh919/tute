@@ -1,5 +1,5 @@
-.main-box
-{margin-top: 200px;
+.main-box{
+  margin-top: 100px;
 }
 
 
@@ -13,20 +13,7 @@
   width: 350px;
   border-radius: 10px;
 }
-#get
-{
-  background-color: orange;
-  border: 0px;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 15px;
-  border-radius: 10px;
-  padding-left: 390px;
-  padding-right: 390px;
-  margin-left: 3px;
-  cursor: pointer;
-}
+
 .boxline
 {
   padding-top: 30px;
@@ -1069,4 +1056,46 @@ text-align: justify;
 }
 .countryalignmnt:hover{
   background-color: #ccc;
+}
+
+.get-started-btn{
+  background-color: orange;
+  width: 87%;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media(max-width:768px){
+
+  .box {
+    width: 180px;
+    margin-left: -45px;
+  }
+
+  .get-started-btn{
+    margin-left: -48px;
+  }
+
+  .main-box{
+    margin-top: 21px;
+  }
+
+  .schoolingcouncilmbl{
+    margin-top: -68px;
+  }
+
+  .main-footer-container{
+    display: none !important;
+  }
+
+  .text-left {
+    margin-top: 23px;
+  }
+
 }

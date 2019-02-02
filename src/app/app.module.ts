@@ -24,6 +24,7 @@ import { recorededSessionModule } from './recorded-session/recorded-session.modu
 import { RecordedSessionComponent } from './recorded-session/recorded-session.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import { PaymentFailureComponent } from './payment-failure/payment-failure.component';
+import { ViewDetailsLiveSessionComponent } from './view-details-live-session/view-details-live-session.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PaymentFailureComponent } from './payment-failure/payment-failure.compo
     RecordedSessionComponent,
     PaymentSuccessComponent,
     PaymentFailureComponent,
+    ViewDetailsLiveSessionComponent,
     // FooterpageComponent,
   ],
   imports: [

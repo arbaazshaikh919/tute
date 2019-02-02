@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container drop-main">
-  <div class="row">
+  <div class="row responsive-style">
     <div class="col-md-3"></div>
     <div class="col-md-3">
       <p class="drop-title">Class</p>
@@ -15,33 +15,33 @@
   </div>
 
   <form action="" method="POST" [formGroup]="advanceFilterForm">
-    <div class="row">
+    <div class="row  responsive-center-adjustment">
       <div class="col-md-3">
         <p class="drop-heading">Refine search</p>
       </div>
       <div class="col-md-3">
         <select class="ls-dropdown" formControlName="classes">
-          <option value="01">Select Class</option>
-          <option *ngFor="let class of this.dataService.staticClasses.list" value="{{class.value}}">{{class.text}}</option>
+          <option value="0">Select Class</option>
+          <option *ngFor="let class of this.dataService.class.model.list" value="{{class.value}}">{{class.text}}</option>
         </select>
       </div>
       <div class="col-md-3">
-        <select class="ls-dropdown" formControlName="Syllabus">
+        <select class="ls-dropdown" formControlName="Syllabus" (change)="getSyllabusDetails()">
           <option value="0">Select Syllabus</option>
-          <option *ngFor="let syllabus of this.dataService.level.model.list" value="{{syllabus.text}}">{{syllabus.text}}</option>
+          <option *ngFor="let syllabus of this.dataService.level.model.list" value="{{syllabus.value}} {{syllabus.text}}">{{syllabus.text}}</option>
         </select>
       </div>
       <div class="col-md-3">
-        <select class="ls-dropdown" formControlName="Subject">
+        <select class="ls-dropdown" formControlName="Subject" (change)="getSudjectDetails()">
           <option value="0">Select Subject</option>
-          <option *ngFor="let Subject of this.dataService.staticSubject.list" value="{{Subject.value}}">{{Subject.text}}</option>
+          <option *ngFor="let Subject of this.dataService.subject.model.list" value="{{Subject.value}} {{Subject.text}}">{{Subject.text}}</option>
         </select>
       </div>
     </div>
   </form>
 
 
-  <div class="row drop-second">
+  <div class="row drop-second  responsive-center-adjustment">
     <div class="col-md-3">
       <p class="drop-heading">Type of Session</p>
     </div>
@@ -62,7 +62,7 @@
   <div class="container book">
     <div class="row ls-content-row">
       <div class="col-md-12">
-        <p class="ls-content-p"><strong class="ls-content-b">{{ sesstionType == '' ? '' : sesstionType }} Session</strong> | {{this.advanceFilterForm.controls.Subject.value == 0 ? '' : this.advanceFilterForm.controls.Subject.value}}</p>
+        <p class="ls-content-p"><strong class="ls-content-b">{{ sesstionType == '' ? '' : sesstionType }} Session</strong> | {{this.advanceFilterForm.controls.Subject.value == 0 ? '' : fetchedSubjectName}}</p>
       </div>
       <mat-accordion style="width:100%;" *ngIf="isAvailable" >
         <!-- <mat-expansion-panel class="accordion-style" *ngFor="let Results of this.SearchedRes"> -->
