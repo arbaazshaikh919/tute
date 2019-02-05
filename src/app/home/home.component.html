@@ -22,22 +22,22 @@
                     <div class="col-md-6">
                         <select class="box" formControlName="Syllabus">
                             <option value="0">-- Select Syllabus --</option>
-                            <option class="color-black" *ngFor="let syllabus of this.dataService.level.model.list"  value="{{syllabus.text}}">{{syllabus.text}}</option>
+                            <option class="color-black" *ngFor="let syllabus of this.dataService.level.model.list"  value="{{syllabus.value}} {{syllabus.text}}">{{syllabus.text}}</option>
                         </select>
                     </div>
                 </div>
                 <div class="row boxline">
                     <div class="col-md-6">
                         <select class="box" formControlName="classes">
-                            <option value="01">-- Select Class --</option>
-                            <option class="color-black" *ngFor="let classes of this.dataService.staticClasses.list" value="{{classes.value}}">{{classes.text}}</option>
+                            <option value="0">-- Select Class --</option>
+                            <option class="color-black" *ngFor="let classes of this.dataService.class.model.list" value="{{classes.value}}">{{classes.text}}</option>
                         </select>
                             
                     </div>
                     <div class="col-md-6">
                         <select class="box" formControlName="Subject">
                             <option  value="0">-- Select Subject --</option>
-                            <option class="color-black" *ngFor="let subject of this.dataService.staticSubject.list" value="{{subject.value}}">{{subject.text}}</option>
+                            <option class="color-black" *ngFor="let Subject of this.dataService.subject.model.list" value="{{Subject.value}} {{Subject.text}}">{{Subject.text}}</option>
                         </select>
                     </div>
                 </div>

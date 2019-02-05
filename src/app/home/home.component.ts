@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.advanceFilterForm = this.FormBuilder.group({
       SessionType: new FormControl('01', [Validators.required, Validators.maxLength(1)]),
       Syllabus: new FormControl('0', [Validators.required, Validators.minLength(2)]),
-      classes: new FormControl('01', [Validators.required, Validators.maxLength(1)]),
+      classes: new FormControl('0', [Validators.required]),
       Subject: new FormControl('0', [Validators.required, Validators.minLength(2)]),
     });
   }

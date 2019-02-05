@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="ls-content">
+  <div class="container book">
+    <div class="row ls-content-row">
+      <div class="col-md-12">
+        <p class="ls-content-p"><strong class="ls-content-b">Contact Us</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contactus-banner">
+    <div class="container">
+      <form action="" [formGroup]="contactForm" [ngClass]="{'FromValidation': this.contactForm.invalid}" (submit)="handleFormSubmit()">
+        <div class="row">
+            <div class="col-sm-6">
+              <label for="input-name">Name </label>
+              <input type="text" formControlName="Name" required class="book-input" placeholder="Name" />
+            </div>
+            <div class="col-sm-6">
+              <label for="input-Number">Phone Number </label>
+              <input type="number" formControlName="Phone" required class="book-input" placeholder="Phone Number" />
+            </div>
+            <div class="col-sm-12">
+              <label for="input-Email">Email Id</label>
+              <input type="text" formControlName="Email" required class="book-input" ngModel [email]="true" placeholder="Email Id" />
+            </div>
+            <div class="col-sm-12">
+              <label for="input-Email">Description</label>
+              <textarea class="book-input-textarea" rows="4" formControlName="description" placeholder="Enter your queries here.."></textarea>
+            </div>
+            <button type="submit" class="book-btn" [disabled]="this.contactForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="alternate-contact-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <span class="email-title">Email</span> <br />
+            <span class="email">info@tute.in</span>
+          </div>
+          <div class="col-sm-6 secound">
+            <span class="contact-title">Contact</span> <br />
+            <span class="contact">83749729304</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

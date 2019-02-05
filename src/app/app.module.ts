@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // import { FooterpageComponent } from './footerpage/footerpage.component';
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BookTrialComponent } from './book-trial/book-trial.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LiveSessionComponent } from './live-session/live-session.component';
 import { recorededSessionModule } from './recorded-session/recorded-session.module';
 import { RecordedSessionComponent } from './recorded-session/recorded-session.component';
@@ -38,6 +40,7 @@ import { ViewDetailsLiveSessionComponent } from './view-details-live-session/vie
     PaymentSuccessComponent,
     PaymentFailureComponent,
     ViewDetailsLiveSessionComponent,
+    ContactUsComponent,
     // FooterpageComponent,
   ],
   imports: [
@@ -52,7 +55,7 @@ import { ViewDetailsLiveSessionComponent } from './view-details-live-session/vie
     BrowserAnimationsModule,
     NgbModule,
   ],
-  providers: [UserService],
+  providers: [UserService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

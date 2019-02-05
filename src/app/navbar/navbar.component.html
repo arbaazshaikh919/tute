@@ -22,17 +22,20 @@
                         <a class="nav-link" routerLink="/bookTrail">Book a Trial</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="#">Contact us</a>
+                        <a class="nav-link" routerLink="/contactUs">Contact us</a>
                     </li>
-        
                     <li class="nav-item">
-                    <button class="btn btn-outline-success" type="submit" (click)="open2(content2)">Sign up</button>
+                        <a class="nav-link" href="http://learn.tute.in" *ngIf="menuVisibility">My Orders</a>
+                    </li>
+                    <li class="nav-item">
+                    <button class="btn btn-outline-success" type="submit" *ngIf="menuAccountVisibility" (click)="open2(content2)">Sign up</button>
+                    <button class="btn btn-outline-success" type="button" (click)="logoutUser()" *ngIf="menuAccountLogoutVisibility">Log out</button>
                     </li>
                 </ul>
 
                 <div class="multiLevelNavBar" (mouseleave)="triggerOffMultiLevelMenu()" *ngIf="isActivatedMultiLevelMenu">
-                    <div class="carrot1" *ngIf="LiveSessionMenu"></div>
-                    <div class="carrot" *ngIf="RecorededSessionMenu"></div>
+                    <div class="carrot1" [ngStyle]="{'left': menuVisibility ? '490px' : '622px'}" *ngIf="LiveSessionMenu"></div>
+                    <div class="carrot" [ngStyle]="{'left': menuVisibility ? '307px' : '429px'}" *ngIf="RecorededSessionMenu"></div>
                     <div class="NavBar face1">
                         <div class="navbarHeader">
                             <span>Choose Board</span>
@@ -69,30 +72,29 @@
     <div class="container">
         <div class="row main">
             <div class="col-md-6 bg-popup">
-                    <img src="/assets/tute-logo.png" width="100" alt="logo" class="logo-popup">
+                <img src="/assets/tute-logo.png" width="100" alt="logo" class="logo-popup">
                 <p class="white">Learn lessons online in small group <br> by highly qualified teachers <br>at an affordable cost.</p>
-
                 <p class="white1">By logging into Tute, you agree to our <br><u> Terms of use & Privacy Policy</u></p>
             </div>
             <div class="col-md-6 bg-popup1">
-                    <button type="button" id="login-close" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                <h2 class="login">Login</h2>
-                <p class="signup">Don't have an account?<a (click)="open1(content1)" class="orange"> Sign up</a></p>
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                        <input type="text"  formControlName="username" class="form-control input-popup" placeholder="Email ID"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
-                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                                <div class="require" *ngIf="f.username.errors.required">*Username is required</div>
-                            </div>
-                        <input type="password" formControlName="password" class="form-control input-popup"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                <div class="require" *ngIf="f.password.errors.required">*Password is required</div>
-                            </div>
-                        <button type="submit" class="input-btn">Login</button>
-                </form>
-                
+                <button type="button" id="login-close" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            <h2 class="login">Login</h2>
+            <p class="signup">Don't have an account?<a (click)="open1(content1)" class="orange"> Sign up</a></p>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <input type="text"  formControlName="username" class="form-control input-popup" placeholder="Email ID"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div class="require" *ngIf="f.username.errors.required">*Username is required</div>
                 </div>
+                <input type="password" formControlName="password" class="form-control input-popup"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div class="require" *ngIf="f.password.errors.required">*Password is required</div>
+                </div>
+                <button type="submit" class="input-btn">Login</button>
+            </form>
+            
+            </div>
         </div>
     </div>
 </ng-template>
@@ -117,17 +119,17 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                                <input type="text"  formControlName="fname" class="form-control input-rpopup" placeholder="First Name"  [ngClass]="{ 'is-invalid': rsubmitted && r.fname.errors }"/>
-                                <div *ngIf="rsubmitted && r.fname.errors" class="invalid-feedback">
-                                <div class="require1" *ngIf="r.fname.errors.required">*First Name is required</div>
-                                </div>
+                            <input type="text"  formControlName="fname" class="form-control input-rpopup" placeholder="First Name"  [ngClass]="{ 'is-invalid': rsubmitted && r.fname.errors }"/>
+                            <div *ngIf="rsubmitted && r.fname.errors" class="invalid-feedback">
+                            <div class="require1" *ngIf="r.fname.errors.required">*First Name is required</div>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                                <input type="text"  formControlName="lname" class="form-control input-rpopup" placeholder="Last Name"  [ngClass]="{ 'is-invalid': rsubmitted && r.lname.errors }"/>
-                                <div *ngIf="rsubmitted && r.lname.errors" class="invalid-feedback">
-                                <div class="require1" *ngIf="r.lname.errors.required">*Last Name is required</div>
-                                </div>
+                            <input type="text"  formControlName="lname" class="form-control input-rpopup" placeholder="Last Name"  [ngClass]="{ 'is-invalid': rsubmitted && r.lname.errors }"/>
+                            <div *ngIf="rsubmitted && r.lname.errors" class="invalid-feedback">
+                            <div class="require1" *ngIf="r.lname.errors.required">*Last Name is required</div>
                             </div>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -164,7 +166,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="input-rbtn">Login</button>
+                    <button type="submit" class="input-rbtn">Sign Up</button>
                 </form>
             </div>
         </div>

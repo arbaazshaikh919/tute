@@ -1,0 +1,40 @@
+.contactus-banner{
+    margin-top: -103px;
+}
+
+.contactus-banner form label {
+    margin-top: 20px;
+}
+
+.contactus-banner form input {
+    height: 50px;
+    padding-left: 15px;
+}
+
+.contactus-banner form button {
+    margin-top: 20px;
+}
+
+.alternate-contact-banner{
+    background-color: #ffffff;
+    width: 100%;
+    height: 80px;
+    margin-top: 40px;
+    text-align: center;
+}
+.alternate-contact-banner .email-title, .contact-title{
+    font-size: 22px;
+    font-weight: bold;
+    position: relative;
+    top: 15px;
+}
+
+.alternate-contact-banner .email, .contact{
+    font-size: 18px;
+    position: relative;
+    top: 8px;
+}
+
+.alternate-contact-banner .secound{
+    border-left: 4px solid #F8F8F8;
+}

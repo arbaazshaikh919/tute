@@ -87,6 +87,14 @@ a, button{
     text-align: center;
 }
 .book-input{
+    width: 100%;
+    border-radius: 10px;
+    border:1px solid lightgray;
+    padding: 10px;
+
+}
+.book-input-textarea{
+    width: 100%;
     border-radius: 10px;
     border:1px solid lightgray;
     padding: 10px;
@@ -119,9 +127,9 @@ a, button{
     outline: none !important;
 }
 
-.ng-invalid:not(form){
+/* .ng-invalid:not(form){
     border: 1px solid rgb(199, 65, 65);
-}
+} */
 
 input:focus{
     outline: none !important;
@@ -129,4 +137,17 @@ input:focus{
 
 select:focus{
     outline: none !important;
+}
+
+
+.FromValidation .ng-touched{
+    border: 1px solid rgb(199, 65, 65);
+}
+
+.FromValidation .ng-valid{
+    border: 1px solid lightgray;
+}
+
+:disabled{
+    cursor: not-allowed;
 }

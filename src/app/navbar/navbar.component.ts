@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'angular2-cookie/core';
+import { UserService } from '../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PasswordValidation } from '../password.validation';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { PasswordValidation } from '../password.validation';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -60,16 +61,25 @@ export class NavbarComponent implements OnInit {
     'userName': 'amar.singh@tute.in',
     'year': '8'
   }
+  public userLoginResponse = [];
   public ActivatedRouteParam: any;
   public AlterStyle: boolean;
+  public menuVisibility = false;
+  public menuAccountVisibility = false;
+  public menuAccountLogoutVisibility = false;
 
 
-  constructor(private formBuilder: FormBuilder,private modalService: NgbModal,private _router:Router, private router:ActivatedRoute,private user: UserService) { 
-    // console.log(this.user.hideElement,this.user.hideElement0)
+  constructor(private formBuilder: FormBuilder, private modalService: NgbModal, private _router: Router, private router: ActivatedRoute, private user: UserService, private cookieService: CookieService) { 
     this.renderNavbarStyle();
+    this.checkMenuvisibility();
   }
-
+  
   ngOnInit() {
+    
+    this.ActivatedRouteParam = this._router.url;
+    if (this.ActivatedRouteParam == '/') {
+      this.AlterStyle = false;
+    }
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -89,7 +99,27 @@ export class NavbarComponent implements OnInit {
       });
     }
 
+  public checkMenuvisibility(){
+    if (this.cookieService.get('_oAuth') != ''){
+      this.menuVisibility = true;
+      this.menuAccountVisibility = false;
+      this.menuAccountLogoutVisibility = true;
+    }else{
+      this.menuVisibility = false;
+      this.menuAccountVisibility = true;
+      this.menuAccountLogoutVisibility = false;
+    }
+  }
 
+  public logoutUser(){
+    this.cookieService.put('_oAuth', '');
+    this.cookieService.put('FirstName', '');
+    this.cookieService.put('LastName', '');
+    this._router.navigate(['/home']);
+    this.menuVisibility = false;
+    this.menuAccountVisibility = true;
+    this.menuAccountLogoutVisibility = false;
+  }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -151,15 +181,19 @@ export class NavbarComponent implements OnInit {
     }
     console.log(this.loginForm.value);
 
-    this.user.login(this.loginForm.value)
-
-      .subscribe((response) => {
+    this.user.login(this.loginForm.value).subscribe((response) => {
         this.user.profile = response.response;
         console.log(this.user.profile);
         if (this.user.profile.code == 200) {
-
-          console.log('Hi' +this.user.profile.model.firstName+'Welcome to Tute');
-          alert('Hi'+' '+this.user.profile.model.firstName+' '+'!'+' '+'Welcome to Tute')
+          this.userLoginResponse.push(this.user.profile);
+          this.cookieService.put('_oAuth', `${this.user.profile.model.userKey}`);
+          this.cookieService.put('FirstName', `${this.user.profile.model.firstName}`);
+          this.cookieService.put('LastName', `${this.user.profile.model.lastName}`);
+          this.menuVisibility = true;
+          this.menuAccountVisibility = false;
+          this.menuAccountLogoutVisibility = true;
+          // console.log('Hi' +this.user.profile.model.firstName+'Welcome to Tute');
+          // alert('Hi'+' '+this.user.profile.model.firstName+' '+'!'+' '+'Welcome to Tute')
           let btn = document.getElementById("login-close") as HTMLButtonElement
           btn.click();
 
@@ -169,8 +203,7 @@ export class NavbarComponent implements OnInit {
           alert('Wrong Login Credentails !');
           // this.router.navigateByUrl('/login');
         }
-      },
-        err => {
+      }, err => {
           console.log('Wrong Login Credentails !', err);
           alert('Wrong Login Credentails !');
         }
@@ -184,11 +217,11 @@ export class NavbarComponent implements OnInit {
   onRegister() {
     this.rsubmitted = true;
     // stop here if form is invalid
-    console.log(this.registerForm.invalid);
+    // console.log(this.registerForm.invalid);
     if (this.registerForm.invalid) {
       return;
     }
-    console.log(this.registerForm.value);
+    // console.log(this.registerForm.value);
 
     this.register.firstName = this.registerForm.value.fname;
     this.register.lastName = this.registerForm.value.lname;

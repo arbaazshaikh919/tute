@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 //Components Import 
 import { HomeComponent } from './home/home.component';
 import { BookTrialComponent } from './book-trial/book-trial.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LiveSessionComponent } from './live-session/live-session.component';
 import { RecordedSessionComponent } from './recorded-session/recorded-session.component';
 import { ViewDetailsLiveSessionComponent } from './view-details-live-session/view-details-live-session.component'
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'liveSession', component: LiveSessionComponent },
   { path: 'bookTrail', component: BookTrialComponent },
   { path: 'recordedSession', component: RecordedSessionComponent },
-  { path: 'viewDetails', component: ViewDetailsLiveSessionComponent }
+  { path: 'viewDetails', component: ViewDetailsLiveSessionComponent },
+  { path: 'contactUs', component: ContactUsComponent }
   // { path: '', component:  }
  
 
