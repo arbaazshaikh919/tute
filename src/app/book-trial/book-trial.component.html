@@ -44,6 +44,10 @@
                 <option class="color-black" *ngFor="let Subject of this.dataService.subject.model.list" value="{{Subject.value}} {{Subject.text}}">{{Subject.text}}</option>
               </select>
             </div>
+            <div class="col-sm-12">
+              <label for="input-Email">Description</label>
+              <textarea class="book-input-textarea" rows="4" formControlName="description" placeholder="Enter your queries here.."></textarea>
+            </div>
           </div>
           <div class="row">
             <button type="submit" class="book-btn" [disabled]="this.bookTrailForm.invalid">Book a Free Trial Lesson</button>

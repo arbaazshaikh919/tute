@@ -16,6 +16,7 @@ export class BookTrialComponent implements OnInit {
   Board= '';
   Class = '';
   Subject = '';
+  description = '';
   bookTrailForm:FormGroup;
   
   constructor(private dataService: UserService, private FormBuilder:FormBuilder) { 
@@ -33,6 +34,7 @@ export class BookTrialComponent implements OnInit {
       Board: new FormControl('', [Validators.required]),
       Class: new FormControl('', [Validators.required]),
       Subject: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
     });
   }
 
@@ -43,6 +45,7 @@ export class BookTrialComponent implements OnInit {
     console.log(this.bookTrailForm.controls.Board.value)
     console.log(this.bookTrailForm.controls.Class.value)
     console.log(this.bookTrailForm.controls.Subject.value)
+    console.log(this.bookTrailForm.controls.description.value)
   }
 
 }

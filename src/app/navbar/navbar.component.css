@@ -306,6 +306,17 @@ background-color: white;
 .btn{
   margin-top:10px;
 }
+
+.alterCarrot1Style{
+  position: relative;
+  left: 490px;
+  background-color: #EFEFEF;
+}
+.alterCarrotStyle{
+  position: relative;
+  left: 307px;
+  background-color: #EFEFEF;
+}
 @media(min-width:350px) and (max-width:450px){
   nav>.navbar-toggler{
     padding: 5px;

@@ -87,7 +87,7 @@ export class UserService {
   public profile:any;
   public rprofile:any;
   public hideElement:boolean = true;
-  public hideElement0:boolean =false;
+  public hideElement0:boolean = false;
   constructor(private http: Http, private HttpClient: HttpClient) { }
   // city and country code service
 

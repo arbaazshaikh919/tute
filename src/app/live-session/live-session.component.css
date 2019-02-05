@@ -178,6 +178,10 @@ margin-right:auto;
     padding-top: 20px;
 }
 
+.drop-btn{
+    width: 94.5%;
+}
+
 @media (max-width:768px){
     .responsive-style{
         display: none !important;
