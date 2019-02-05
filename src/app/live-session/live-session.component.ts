@@ -44,7 +44,7 @@ export class LiveSessionComponent implements OnInit {
   Subject = null;
   advanceFilterForm: FormGroup;
 
-  constructor(private dataService: UserService, private FormBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  constructor(public dataService: UserService, private FormBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.renderAdvanceFilterForm();
     // console.log(this.dataService.renderLesssonFinderPayload('1', '15', '19').subjectIds)
   }

@@ -70,7 +70,7 @@ export class RecordedSessionComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
-    private dataService: UserService, 
+    public dataService: UserService, 
     private FormBuilder: FormBuilder) {
     this.renderAdvanceFilterForm();
     this.renderSelectionListForm();
@@ -115,7 +115,7 @@ export class RecordedSessionComponent implements OnInit {
       this.activeBothClass = false;
       this.activeLiveClass = false;
       this.sesstionType = 'Recorded';
-      // this.sessionAPIURL = "http://dev.tute.in/api/Lesson/GetLessionList?syllabus=CBSE&classes=6&subject=Maths&lessonType=1"
+      // this.sessionAPIURL = "http://dev.tute.in/api/Lesson/GetLessionList?syllabus=CBSE&classes=6&subject=Maths&lessonType=1";
       this.sessionAPIURL = this.BaseURL + `syllabus=${this.fetchedSyllabusName}&classes=${this.advanceFilterForm.controls.classes.value}&subject=${this.fetchedSubjectName}&lessonType=1`;
     }
     this.parseRequiredAPI(this.sessionAPIURL);
@@ -198,6 +198,7 @@ export class RecordedSessionComponent implements OnInit {
       cancel_url: new FormControl(),
     });
   }
+  
   public paymentHandler(){
     this.orderId = Math.floor((Math.random() * 100000000000) + 1);
     if (this.total != null && this.advanceFilterForm.valid){

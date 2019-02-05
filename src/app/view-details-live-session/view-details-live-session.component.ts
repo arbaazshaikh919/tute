@@ -34,7 +34,7 @@ export class ViewDetailsLiveSessionComponent implements OnInit {
   encRequest: string;
   triggerURL: string;
 
-  constructor(private dataService: UserService, private router: Router, private route: ActivatedRoute, private FormBuilder:FormBuilder) { 
+  constructor(public dataService: UserService, private router: Router, private route: ActivatedRoute, private FormBuilder:FormBuilder) { 
     this.renderSelectionListForm();
     if (this.videoLiveLessons == null){
       this.router.navigate['/home'];

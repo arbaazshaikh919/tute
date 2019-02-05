@@ -1,4 +1,5 @@
 import { Component , Input} from '@angular/core';
+import { CookieService } from 'angular2-cookie/core';
 import { UserService } from './services/user.service';
 import { Router, NavigationEnd } from '@angular/router';
 @Component({
@@ -9,7 +10,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   title = 'app';
  
-  constructor(public router: Router,private dataService : UserService){
+  constructor(public router: Router, private dataService: UserService, private cookieService: CookieService){
     this.bootStrapLoaders();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -57,5 +58,8 @@ export class AppComponent {
     }, err => {
       console.log('Network Info', err);
     });
+
+    //handling Cookie
+    
   }
 }

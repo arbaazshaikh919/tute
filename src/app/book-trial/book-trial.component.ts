@@ -19,7 +19,7 @@ export class BookTrialComponent implements OnInit {
   description = '';
   bookTrailForm:FormGroup;
   
-  constructor(private dataService: UserService, private FormBuilder:FormBuilder) { 
+  constructor(public dataService: UserService, private FormBuilder:FormBuilder) { 
     this.renderBookTrailForm();
   }
 

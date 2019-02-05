@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   advanceFilterForm: FormGroup;
 
 
-  constructor(private router: Router, route: ActivatedRoute, private dataService: UserService, private FormBuilder: FormBuilder) { 
+  constructor(private router: Router, route: ActivatedRoute, public dataService: UserService, private FormBuilder: FormBuilder) { 
     this.renderAdvanceFilterForm()
   }
    
